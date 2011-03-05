@@ -14,15 +14,36 @@ public final class R {
     public static final class attr {
     }
     public static final class drawable {
-        public static final int icon=0x7f020000;
+        public static final int arsenal=0x7f020000;
+        public static final int aston_villa=0x7f020001;
+        public static final int birmingham=0x7f020002;
+        public static final int blackburn=0x7f020003;
+        public static final int blackpool=0x7f020004;
+        public static final int bolton=0x7f020005;
+        public static final int chelsea=0x7f020006;
+        public static final int everton=0x7f020007;
+        public static final int fulham=0x7f020008;
+        public static final int icon=0x7f020009;
+        public static final int liverpool=0x7f02000a;
+        public static final int man_city=0x7f02000b;
+        public static final int man_utd=0x7f02000c;
+        public static final int newcastle=0x7f02000d;
+        public static final int stoke=0x7f02000e;
+        public static final int sunderland=0x7f02000f;
+        public static final int tottenham=0x7f020010;
+        public static final int west_brom=0x7f020011;
+        public static final int west_ham=0x7f020012;
+        public static final int wigan=0x7f020013;
+        public static final int wolves=0x7f020014;
     }
     public static final class id {
         public static final int button_continue=0x7f060007;
         public static final int button_guess1=0x7f060003;
         public static final int button_restart=0x7f060006;
-        public static final int button_start=0x7f06000a;
-        public static final int spinner_difficulty=0x7f060009;
-        public static final int spinner_difficulty_label=0x7f060008;
+        public static final int button_start=0x7f06000b;
+        public static final int gridview_pick_club=0x7f060008;
+        public static final int spinner_difficulty=0x7f06000a;
+        public static final int spinner_difficulty_label=0x7f060009;
         public static final int text_end_player=0x7f060005;
         public static final int text_game_title=0x7f060000;
         public static final int text_previously_played=0x7f060002;
@@ -31,7 +52,8 @@ public final class R {
     }
     public static final class layout {
         public static final int one_degree=0x7f030000;
-        public static final int start_game=0x7f030001;
+        public static final int pick_club=0x7f030001;
+        public static final int start_game=0x7f030002;
     }
     public static final class string {
         public static final int app_name=0x7f040001;

@@ -35,13 +35,8 @@ public class StartGame extends Activity {
 		public void onClick(View v) {
 			
 			Intent intent = new Intent(StartGame.this, OneDegree.class);     
-            startActivity(intent);		
-			
-//			String message = String.format("You have selected %s difficulty level", 
-//					spinner.getSelectedItem().toString());        	
-//          Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();			
-		}   	
-    	
+            startActivity(intent);	
+		}    	
     } 
 }
 

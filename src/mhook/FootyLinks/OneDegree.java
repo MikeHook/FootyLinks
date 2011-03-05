@@ -1,7 +1,7 @@
 package mhook.FootyLinks;
 
-import mhook.FootyLinks.StartGame.StartButtonClickListener;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -18,10 +18,19 @@ public class OneDegree  extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.one_degree);       
         
-        /**
-        Button startButton = (Button) findViewById(R.id.button_start);        
-        startButton.setOnClickListener(new StartButtonClickListener());
-        */
-    }   
+        
+        Button guess1Button = (Button) findViewById(R.id.button_guess1);        
+        guess1Button.setOnClickListener(new Guess1ButtonClickListener());        
+    } 
+	
+    public class Guess1ButtonClickListener implements OnClickListener {
+
+		@Override
+		public void onClick(View v) {
+			
+			Intent pickClubIntent = new Intent(OneDegree.this, PickClub.class);     
+            startActivity(pickClubIntent);	
+		}    	
+    } 
 
 }
