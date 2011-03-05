@@ -1,0 +1,11 @@
+_ReSharper.*/
+package/
+.cubeworks/
+docs//.\~
+[oO]bj
+[bB]in
+*.user
+*.suo
+[Tt]humbs.db
+~$\*
+*.Publish.xml

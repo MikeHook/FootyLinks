@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="10dip"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+    <TextView
+    	android:id="@+id/spinner_difficulty_label"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dip"
+        android:text="@string/spinner_difficulty_prompt"
+    />
+    <Spinner 
+        android:id="@+id/spinner_difficulty"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:prompt="@string/spinner_difficulty_prompt"
+        android:layout_below="@id/spinner_difficulty_label"
+    	android:layout_centerHorizontal="true"
+    />
+    <Button
+    	android:id="@+id/button_start"
+    	android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	android:layout_below="@id/spinner_difficulty"
+    	android:layout_centerHorizontal="true"
+    	android:text="@string/button_start_text"
+    />
+</RelativeLayout>

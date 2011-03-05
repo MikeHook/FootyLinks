@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Play the Six degrees of Football game</string>
+    <string name="app_name">SixDegreesFootball</string>
+<!-- start_game strings-->
+    <string name="spinner_difficulty_prompt">Choose your difficulty level</string>
+    <string-array name="difficulty_array">
+        <item>Amateur: 1 degree</item>
+        <item>Non-legaue: 2 degrees</item>
+        <item>Semi-Pro: 3 degrees</item>
+        <item>Pro: 4 degrees</item>
+        <item>National: 5 degrees</item>
+        <item>World Class: 6 degrees</item>
+    </string-array>
+    <string name="button_start_text">Kick off!</string>
+<!-- start_game strings end-->
+<!-- one degree strings-->
+    <string name="text_game_title">Can you link these players?</string>
+    <string name="text_previously_played">used to play for</string>
+	<string name="text_squad_includes">whose squad includes</string>
+<!-- one degree strings end-->
+</resources>
