@@ -28,9 +28,33 @@ public class OneDegree  extends Activity {
 		@Override
 		public void onClick(View v) {
 			
-			Intent pickClubIntent = new Intent(OneDegree.this, PickClub.class);     
-            startActivity(pickClubIntent);	
+			Intent pickClubIntent = new Intent(OneDegree.this, PickClub.class);  			
+			startActivityForResult(pickClubIntent, 1);
 		}    	
-    } 
-
+    }
+	
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        super.onActivityResult(requestCode, resultCode, intent);
+        Bundle extras = intent.getExtras();
+		switch(requestCode) {
+		case 1:
+			int clubId = extras.getInt("ClubId");
+			//As this is just a prototype, hard code the clubId here, 
+			//The answer is Chelsea, whose id is 6 
+			if (clubId == 6)
+			{
+				Toast.makeText(OneDegree.this, "Congrats, you selected the correct club!", 
+						Toast.LENGTH_SHORT).show(); 
+			}
+			else
+			{
+				Toast.makeText(OneDegree.this, "Sorry that's not right, please try again.", 
+						Toast.LENGTH_SHORT).show();
+			}			
+			break;
+		}
+    }
 }
+
+

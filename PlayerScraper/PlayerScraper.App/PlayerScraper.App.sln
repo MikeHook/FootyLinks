@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlayerScraper.App", "PlayerScraper.App.csproj", "{442D603D-1258-4F54-B8F8-06C9C2A3D9D2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlayerScraper.Core", "..\PlayerScraper.Core\PlayerScraper.Core.csproj", "{73168A4A-F11A-488D-B36B-C83E3CCEF1AB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{442D603D-1258-4F54-B8F8-06C9C2A3D9D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{442D603D-1258-4F54-B8F8-06C9C2A3D9D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{442D603D-1258-4F54-B8F8-06C9C2A3D9D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{442D603D-1258-4F54-B8F8-06C9C2A3D9D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73168A4A-F11A-488D-B36B-C83E3CCEF1AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73168A4A-F11A-488D-B36B-C83E3CCEF1AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73168A4A-F11A-488D-B36B-C83E3CCEF1AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73168A4A-F11A-488D-B36B-C83E3CCEF1AB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
