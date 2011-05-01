@@ -13,7 +13,6 @@
     <bag cascade="all" name="FormerPlayers" table="PlayerClub">
       <key foreign-key="FK_FormerClub">
         <column name="Club_id" />
-        <column name="Player_id" />
       </key>
       <many-to-many class="FootyLinks.Core.Player, FootyLinks.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" foreign-key="FK_FormerPlayer">
         <column name="Player_id" />

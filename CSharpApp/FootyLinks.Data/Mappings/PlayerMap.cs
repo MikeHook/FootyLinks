@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using FootyLinks.Core;
+using FootyLinks.Core.Domain;
 using FluentNHibernate.Mapping;
 
 namespace FootyLinks.Data.Mappings

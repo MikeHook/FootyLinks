@@ -45,8 +45,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Club.cs" />
-    <Compile Include="Player.cs" />
+    <Compile Include="Domain\Club.cs" />
+    <Compile Include="Domain\Player.cs" />
+    <Compile Include="Dto\PlayerClubDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

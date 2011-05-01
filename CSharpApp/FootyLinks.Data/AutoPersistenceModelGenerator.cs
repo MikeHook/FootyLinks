@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using FluentNHibernate.Automapping;
-using FootyLinks.Core;
+using FootyLinks.Core.Domain;
 using FluentNHibernate.Conventions.Helpers;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Conventions;

@@ -53,7 +53,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PlayerScraper.Core\FootyLinks.Processes.csproj">
+    <ProjectReference Include="..\FootyLinks.Processes\FootyLinks.Processes.csproj">
       <Project>{73168A4A-F11A-488D-B36B-C83E3CCEF1AB}</Project>
       <Name>FootyLinks.Processes</Name>
     </ProjectReference>

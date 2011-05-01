@@ -6,7 +6,7 @@ using FluentNHibernate.Cfg;
 using NHibernate;
 using NHibernate.Bytecode;
 using FluentNHibernate.Cfg.Db;
-using FootyLinks.Core;
+using FootyLinks.Core.Domain;
 using NHibernate.Cfg;
 using System.IO;
 using NHibernate.Tool.hbm2ddl;
@@ -38,8 +38,7 @@ namespace FootyLinks.DatabaseDeployer
 					// create a couple of Clubs with some players
 					var liverpool = new Club("Liverpool");
 					var chelsea = new Club("Chelsea");
-					var realMadrid = new Club("Real Madrid");
-
+					var realMadrid = new Club("Real Madrid");					
 
 					var stevieG = new Player("Steven Gerrard", liverpool);
 					var fernandoTorres = new Player("Fernando Torres", chelsea);
@@ -58,6 +57,8 @@ namespace FootyLinks.DatabaseDeployer
 					session.SaveOrUpdate(chelsea);
 					session.SaveOrUpdate(realMadrid);
 
+					//session.Linq<Player>();
+					
 					transaction.Commit();					
 				}
 
