@@ -15,15 +15,14 @@ namespace FootyLinks.DataImporter
 {
 	class Program
 	{
-		public static string ErrorLogPath = @"C:\_Development\FootyLinks\ErrorLog\importlog.txt";
-
+		public static string ErrorLogPath = @"C:\_Development\FootyLinks\ErrorLog\importErrorlog.txt";
+		public static string InfoLogPath = @"C:\_Development\FootyLinks\ErrorLog\importInfolog.txt";
 
 		static void Main(string[] args)
 		{
-			//string filePath = @"C:\_Development\FootyLinks\PlayersSource\41328.html";
-
 			try
 			{
+				//string filePath = @"C:\_Development\FootyLinks\PlayersSource\41328.html";
 				string sourceFolder = @"C:\_Development\FootyLinks\PlayersSource\";
 				var playerFiles = Directory.GetFiles(sourceFolder);
 
@@ -41,13 +40,13 @@ namespace FootyLinks.DataImporter
 					}
 					catch (Exception ex)
 					{
-						writeErrorToFile(ErrorLogPath, sourceReference, ex);
+						writeErrorToFile(sourceReference, ex);
 					}
 				}
 			}
 			catch (Exception ex)
 			{
-				writeErrorToFile(ErrorLogPath, 0, ex);
+				writeErrorToFile(0, ex);
 			}
 			
 		}
@@ -65,9 +64,15 @@ namespace FootyLinks.DataImporter
 			//Skip the import if the minimum required info is not present
 			//Could add some info logging here
 			if (string.IsNullOrEmpty(playerName))
+			{
+				writeInfoToFile(sourceReference, "No player name found");
 				return;
+			}
 			if (string.IsNullOrEmpty(currentClubName) && formerClubNames.Count == 0)
+			{
+				writeInfoToFile(sourceReference, "No current or former clubs found for player: " + playerName);
 				return;
+			}
 
 			//Import the Player and clubs
 			using (var session = NHibernateHelper.OpenSession())
@@ -82,7 +87,7 @@ namespace FootyLinks.DataImporter
 					}
 					catch (Exception ex)
 					{
-						writeErrorToFile(ErrorLogPath, sourceReference, ex);
+						writeErrorToFile(sourceReference, ex);
 						transaction.Rollback();
 					}
 				}
@@ -145,12 +150,20 @@ namespace FootyLinks.DataImporter
 			return players.Count == 1 ? players[0] : null;
 		}
 
-		private static void writeErrorToFile(string errorFile, int sourceReference, Exception ex)
+		private static void writeInfoToFile(int sourceReference, string message)
 		{
-			File.AppendAllText(errorFile, string.Format("Source Reference: {0}\r\n", sourceReference));
+			File.AppendAllText(InfoLogPath, string.Format("Source Reference: {0}\r\n", sourceReference));
 
-			File.AppendAllText(errorFile, string.Format("{0}\r\n", ex.ToString()));			
-			File.AppendAllText(errorFile, "\r\n\r\n");
+			File.AppendAllText(InfoLogPath, string.Format("{0}\r\n", message));
+			File.AppendAllText(InfoLogPath, "\r\n\r\n");
+		}
+
+		private static void writeErrorToFile(int sourceReference, Exception ex)
+		{
+			File.AppendAllText(ErrorLogPath, string.Format("Source Reference: {0}\r\n", sourceReference));
+
+			File.AppendAllText(ErrorLogPath, string.Format("{0}\r\n", ex.ToString()));
+			File.AppendAllText(ErrorLogPath, "\r\n\r\n");
 		}
 
 	}

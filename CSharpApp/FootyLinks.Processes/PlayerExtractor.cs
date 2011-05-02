@@ -71,6 +71,9 @@ namespace FootyLinks.Processes
 		{
 			//Retrieve the player name from the 'clubInfo' table
 			var playerTableNode = _htmlDocument.DocumentNode.SelectSingleNode("//table[@class='clubInfo']");
+			if (playerTableNode == null)
+				return null;
+
 			var playerTdNodes = playerTableNode.Descendants("td");
 			var playerName = playerTdNodes.First().InnerText.Trim();
 			return playerName;
