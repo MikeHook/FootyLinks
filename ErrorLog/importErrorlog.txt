@@ -1,0 +1,200 @@
+Source Reference: 10498
+System.InvalidOperationException: Sequence contains more than one matching element
+   at System.Linq.Enumerable.SingleOrDefault[TSource](IEnumerable`1 source, Func`2 predicate)
+   at FootyLinks.Processes.PlayerExtractor.GetCurrentClubName() in C:\_Development\FootyLinks\CSharpApp\FootyLinks.Processes\PlayerExtractor.cs:line 87
+   at FootyLinks.DataImporter.Program.importPlayer(String sourceFilePath, Int32 sourceReference) in C:\_Development\FootyLinks\CSharpApp\FootyLinks.DataImporter\Program.cs:line 61
+   at FootyLinks.DataImporter.Program.Main(String[] args) in C:\_Development\FootyLinks\CSharpApp\FootyLinks.DataImporter\Program.cs:line 36
+
+
+Source Reference: 10568
+System.InvalidOperationException: Sequence contains more than one matching element
+   at System.Linq.Enumerable.SingleOrDefault[TSource](IEnumerable`1 source, Func`2 predicate)
+   at FootyLinks.Processes.PlayerExtractor.GetCurrentClubName() in C:\_Development\FootyLinks\CSharpApp\FootyLinks.Processes\PlayerExtractor.cs:line 87
+   at FootyLinks.DataImporter.Program.importPlayer(String sourceFilePath, Int32 sourceReference) in C:\_Development\FootyLinks\CSharpApp\FootyLinks.DataImporter\Program.cs:line 61
+   at FootyLinks.DataImporter.Program.Main(String[] args) in C:\_Development\FootyLinks\CSharpApp\FootyLinks.DataImporter\Program.cs:line 36
+
+
+Source Reference: 10633
+System.InvalidOperationException: Sequence contains more than one matching element
+   at System.Linq.Enumerable.SingleOrDefault[TSource](IEnumerable`1 source, Func`2 predicate)
+   at FootyLinks.Processes.PlayerExtractor.GetCurrentClubName() in C:\_Development\FootyLinks\CSharpApp\FootyLinks.Processes\PlayerExtractor.cs:line 87
+   at FootyLinks.DataImporter.Program.importPlayer(String sourceFilePath, Int32 sourceReference) in C:\_Development\FootyLinks\CSharpApp\FootyLinks.DataImporter\Program.cs:line 61
+   at FootyLinks.DataImporter.Program.Main(String[] args) in C:\_Development\FootyLinks\CSharpApp\FootyLinks.DataImporter\Program.cs:line 36
+
+
+Source Reference: 10692
+System.InvalidOperationException: Sequence contains more than one matching element
+   at System.Linq.Enumerable.SingleOrDefault[TSource](IEnumerable`1 source, Func`2 predicate)
+   at FootyLinks.Processes.PlayerExtractor.GetCurrentClubName() in C:\_Development\FootyLinks\CSharpApp\FootyLinks.Processes\PlayerExtractor.cs:line 87
+   at FootyLinks.DataImporter.Program.importPlayer(String sourceFilePath, Int32 sourceReference) in C:\_Development\FootyLinks\CSharpApp\FootyLinks.DataImporter\Program.cs:line 61
+   at FootyLinks.DataImporter.Program.Main(String[] args) in C:\_Development\FootyLinks\CSharpApp\FootyLinks.DataImporter\Program.cs:line 36
+
+
+Source Reference: 10693
+System.InvalidOperationException: Sequence contains more than one matching element
+   at System.Linq.Enumerable.SingleOrDefault[TSource](IEnumerable`1 source, Func`2 predicate)
+   at FootyLinks.Processes.PlayerExtractor.GetCurrentClubName() in C:\_Development\FootyLinks\CSharpApp\FootyLinks.Processes\PlayerExtractor.cs:line 87
+   at FootyLinks.DataImporter.Program.importPlayer(String sourceFilePath, Int32 sourceReference) in C:\_Development\FootyLinks\CSharpApp\FootyLinks.DataImporter\Program.cs:line 61
+   at FootyLinks.DataImporter.Program.Main(String[] args) in C:\_Development\FootyLinks\CSharpApp\FootyLinks.DataImporter\Program.cs:line 36
+
+
+Source Reference: 10728
+System.InvalidOperationException: Sequence contains more than one matching element
+   at System.Linq.Enumerable.SingleOrDefault[TSource](IEnumerable`1 source, Func`2 predicate)
+   at FootyLinks.Processes.PlayerExtractor.GetCurrentClubName() in C:\_Development\FootyLinks\CSharpApp\FootyLinks.Processes\PlayerExtractor.cs:line 87
+   at FootyLinks.DataImporter.Program.importPlayer(String sourceFilePath, Int32 sourceReference) in C:\_Development\FootyLinks\CSharpApp\FootyLinks.DataImporter\Program.cs:line 61
+   at FootyLinks.DataImporter.Program.Main(String[] args) in C:\_Development\FootyLinks\CSharpApp\FootyLinks.DataImporter\Program.cs:line 36
+
+
+Source Reference: 10811
+System.InvalidOperationException: Sequence contains more than one matching element
+   at System.Linq.Enumerable.SingleOrDefault[TSource](IEnumerable`1 source, Func`2 predicate)
+   at FootyLinks.Processes.PlayerExtractor.GetCurrentClubName() in C:\_Development\FootyLinks\CSharpApp\FootyLinks.Processes\PlayerExtractor.cs:line 87
+   at FootyLinks.DataImporter.Program.importPlayer(String sourceFilePath, Int32 sourceReference) in C:\_Development\FootyLinks\CSharpApp\FootyLinks.DataImporter\Program.cs:line 61
+   at FootyLinks.DataImporter.Program.Main(String[] args) in C:\_Development\FootyLinks\CSharpApp\FootyLinks.DataImporter\Program.cs:line 36
+
+
+Source Reference: 10840
+System.InvalidOperationException: Sequence contains more than one matching element
+   at System.Linq.Enumerable.SingleOrDefault[TSource](IEnumerable`1 source, Func`2 predicate)
+   at FootyLinks.Processes.PlayerExtractor.GetCurrentClubName() in C:\_Development\FootyLinks\CSharpApp\FootyLinks.Processes\PlayerExtractor.cs:line 87
+   at FootyLinks.DataImporter.Program.importPlayer(String sourceFilePath, Int32 sourceReference) in C:\_Development\FootyLinks\CSharpApp\FootyLinks.DataImporter\Program.cs:line 61
+   at FootyLinks.DataImporter.Program.Main(String[] args) in C:\_Development\FootyLinks\CSharpApp\FootyLinks.DataImporter\Program.cs:line 36
+
+
+Source Reference: 10865
+System.InvalidOperationException: Sequence contains more than one matching element
+   at System.Linq.Enumerable.SingleOrDefault[TSource](IEnumerable`1 source, Func`2 predicate)
+   at FootyLinks.Processes.PlayerExtractor.GetCurrentClubName() in C:\_Development\FootyLinks\CSharpApp\FootyLinks.Processes\PlayerExtractor.cs:line 87
+   at FootyLinks.DataImporter.Program.importPlayer(String sourceFilePath, Int32 sourceReference) in C:\_Development\FootyLinks\CSharpApp\FootyLinks.DataImporter\Program.cs:line 61
+   at FootyLinks.DataImporter.Program.Main(String[] args) in C:\_Development\FootyLinks\CSharpApp\FootyLinks.DataImporter\Program.cs:line 36
+
+
+Source Reference: 11080
+System.InvalidOperationException: Sequence contains more than one matching element
+   at System.Linq.Enumerable.SingleOrDefault[TSource](IEnumerable`1 source, Func`2 predicate)
+   at FootyLinks.Processes.PlayerExtractor.GetCurrentClubName() in C:\_Development\FootyLinks\CSharpApp\FootyLinks.Processes\PlayerExtractor.cs:line 87
+   at FootyLinks.DataImporter.Program.importPlayer(String sourceFilePath, Int32 sourceReference) in C:\_Development\FootyLinks\CSharpApp\FootyLinks.DataImporter\Program.cs:line 61
+   at FootyLinks.DataImporter.Program.Main(String[] args) in C:\_Development\FootyLinks\CSharpApp\FootyLinks.DataImporter\Program.cs:line 36
+
+
+Source Reference: 11138
+System.InvalidOperationException: Sequence contains more than one matching element
+   at System.Linq.Enumerable.SingleOrDefault[TSource](IEnumerable`1 source, Func`2 predicate)
+   at FootyLinks.Processes.PlayerExtractor.GetCurrentClubName() in C:\_Development\FootyLinks\CSharpApp\FootyLinks.Processes\PlayerExtractor.cs:line 87
+   at FootyLinks.DataImporter.Program.importPlayer(String sourceFilePath, Int32 sourceReference) in C:\_Development\FootyLinks\CSharpApp\FootyLinks.DataImporter\Program.cs:line 61
+   at FootyLinks.DataImporter.Program.Main(String[] args) in C:\_Development\FootyLinks\CSharpApp\FootyLinks.DataImporter\Program.cs:line 36
+
+
+Source Reference: 11247
+System.InvalidOperationException: Sequence contains more than one matching element
+   at System.Linq.Enumerable.SingleOrDefault[TSource](IEnumerable`1 source, Func`2 predicate)
+   at FootyLinks.Processes.PlayerExtractor.GetCurrentClubName() in C:\_Development\FootyLinks\CSharpApp\FootyLinks.Processes\PlayerExtractor.cs:line 87
+   at FootyLinks.DataImporter.Program.importPlayer(String sourceFilePath, Int32 sourceReference) in C:\_Development\FootyLinks\CSharpApp\FootyLinks.DataImporter\Program.cs:line 61
+   at FootyLinks.DataImporter.Program.Main(String[] args) in C:\_Development\FootyLinks\CSharpApp\FootyLinks.DataImporter\Program.cs:line 36
+
+
+Source Reference: 11457
+System.InvalidOperationException: Sequence contains more than one matching element
+   at System.Linq.Enumerable.SingleOrDefault[TSource](IEnumerable`1 source, Func`2 predicate)
+   at FootyLinks.Processes.PlayerExtractor.GetCurrentClubName() in C:\_Development\FootyLinks\CSharpApp\FootyLinks.Processes\PlayerExtractor.cs:line 87
+   at FootyLinks.DataImporter.Program.importPlayer(String sourceFilePath, Int32 sourceReference) in C:\_Development\FootyLinks\CSharpApp\FootyLinks.DataImporter\Program.cs:line 61
+   at FootyLinks.DataImporter.Program.Main(String[] args) in C:\_Development\FootyLinks\CSharpApp\FootyLinks.DataImporter\Program.cs:line 36
+
+
+Source Reference: 11957
+System.InvalidOperationException: Sequence contains more than one matching element
+   at System.Linq.Enumerable.SingleOrDefault[TSource](IEnumerable`1 source, Func`2 predicate)
+   at FootyLinks.Processes.PlayerExtractor.GetCurrentClubName() in C:\_Development\FootyLinks\CSharpApp\FootyLinks.Processes\PlayerExtractor.cs:line 87
+   at FootyLinks.DataImporter.Program.importPlayer(String sourceFilePath, Int32 sourceReference) in C:\_Development\FootyLinks\CSharpApp\FootyLinks.DataImporter\Program.cs:line 61
+   at FootyLinks.DataImporter.Program.Main(String[] args) in C:\_Development\FootyLinks\CSharpApp\FootyLinks.DataImporter\Program.cs:line 36
+
+
+Source Reference: 12185
+System.InvalidOperationException: Sequence contains more than one matching element
+   at System.Linq.Enumerable.SingleOrDefault[TSource](IEnumerable`1 source, Func`2 predicate)
+   at FootyLinks.Processes.PlayerExtractor.GetCurrentClubName() in C:\_Development\FootyLinks\CSharpApp\FootyLinks.Processes\PlayerExtractor.cs:line 87
+   at FootyLinks.DataImporter.Program.importPlayer(String sourceFilePath, Int32 sourceReference) in C:\_Development\FootyLinks\CSharpApp\FootyLinks.DataImporter\Program.cs:line 61
+   at FootyLinks.DataImporter.Program.Main(String[] args) in C:\_Development\FootyLinks\CSharpApp\FootyLinks.DataImporter\Program.cs:line 36
+
+
+Source Reference: 12240
+System.InvalidOperationException: Sequence contains more than one matching element
+   at System.Linq.Enumerable.SingleOrDefault[TSource](IEnumerable`1 source, Func`2 predicate)
+   at FootyLinks.Processes.PlayerExtractor.GetCurrentClubName() in C:\_Development\FootyLinks\CSharpApp\FootyLinks.Processes\PlayerExtractor.cs:line 87
+   at FootyLinks.DataImporter.Program.importPlayer(String sourceFilePath, Int32 sourceReference) in C:\_Development\FootyLinks\CSharpApp\FootyLinks.DataImporter\Program.cs:line 61
+   at FootyLinks.DataImporter.Program.Main(String[] args) in C:\_Development\FootyLinks\CSharpApp\FootyLinks.DataImporter\Program.cs:line 36
+
+
+Source Reference: 12245
+System.InvalidOperationException: Sequence contains more than one matching element
+   at System.Linq.Enumerable.SingleOrDefault[TSource](IEnumerable`1 source, Func`2 predicate)
+   at FootyLinks.Processes.PlayerExtractor.GetCurrentClubName() in C:\_Development\FootyLinks\CSharpApp\FootyLinks.Processes\PlayerExtractor.cs:line 87
+   at FootyLinks.DataImporter.Program.importPlayer(String sourceFilePath, Int32 sourceReference) in C:\_Development\FootyLinks\CSharpApp\FootyLinks.DataImporter\Program.cs:line 61
+   at FootyLinks.DataImporter.Program.Main(String[] args) in C:\_Development\FootyLinks\CSharpApp\FootyLinks.DataImporter\Program.cs:line 36
+
+
+Source Reference: 12296
+System.InvalidOperationException: Sequence contains more than one matching element
+   at System.Linq.Enumerable.SingleOrDefault[TSource](IEnumerable`1 source, Func`2 predicate)
+   at FootyLinks.Processes.PlayerExtractor.GetCurrentClubName() in C:\_Development\FootyLinks\CSharpApp\FootyLinks.Processes\PlayerExtractor.cs:line 87
+   at FootyLinks.DataImporter.Program.importPlayer(String sourceFilePath, Int32 sourceReference) in C:\_Development\FootyLinks\CSharpApp\FootyLinks.DataImporter\Program.cs:line 61
+   at FootyLinks.DataImporter.Program.Main(String[] args) in C:\_Development\FootyLinks\CSharpApp\FootyLinks.DataImporter\Program.cs:line 36
+
+
+Source Reference: 12318
+System.InvalidOperationException: Sequence contains more than one matching element
+   at System.Linq.Enumerable.SingleOrDefault[TSource](IEnumerable`1 source, Func`2 predicate)
+   at FootyLinks.Processes.PlayerExtractor.GetCurrentClubName() in C:\_Development\FootyLinks\CSharpApp\FootyLinks.Processes\PlayerExtractor.cs:line 87
+   at FootyLinks.DataImporter.Program.importPlayer(String sourceFilePath, Int32 sourceReference) in C:\_Development\FootyLinks\CSharpApp\FootyLinks.DataImporter\Program.cs:line 61
+   at FootyLinks.DataImporter.Program.Main(String[] args) in C:\_Development\FootyLinks\CSharpApp\FootyLinks.DataImporter\Program.cs:line 36
+
+
+Source Reference: 12359
+System.InvalidOperationException: Sequence contains more than one matching element
+   at System.Linq.Enumerable.SingleOrDefault[TSource](IEnumerable`1 source, Func`2 predicate)
+   at FootyLinks.Processes.PlayerExtractor.GetCurrentClubName() in C:\_Development\FootyLinks\CSharpApp\FootyLinks.Processes\PlayerExtractor.cs:line 87
+   at FootyLinks.DataImporter.Program.importPlayer(String sourceFilePath, Int32 sourceReference) in C:\_Development\FootyLinks\CSharpApp\FootyLinks.DataImporter\Program.cs:line 61
+   at FootyLinks.DataImporter.Program.Main(String[] args) in C:\_Development\FootyLinks\CSharpApp\FootyLinks.DataImporter\Program.cs:line 36
+
+
+Source Reference: 12653
+System.InvalidOperationException: Sequence contains more than one matching element
+   at System.Linq.Enumerable.SingleOrDefault[TSource](IEnumerable`1 source, Func`2 predicate)
+   at FootyLinks.Processes.PlayerExtractor.GetCurrentClubName() in C:\_Development\FootyLinks\CSharpApp\FootyLinks.Processes\PlayerExtractor.cs:line 87
+   at FootyLinks.DataImporter.Program.importPlayer(String sourceFilePath, Int32 sourceReference) in C:\_Development\FootyLinks\CSharpApp\FootyLinks.DataImporter\Program.cs:line 61
+   at FootyLinks.DataImporter.Program.Main(String[] args) in C:\_Development\FootyLinks\CSharpApp\FootyLinks.DataImporter\Program.cs:line 36
+
+
+Source Reference: 1269
+System.InvalidOperationException: Sequence contains more than one matching element
+   at System.Linq.Enumerable.SingleOrDefault[TSource](IEnumerable`1 source, Func`2 predicate)
+   at FootyLinks.Processes.PlayerExtractor.GetCurrentClubName() in C:\_Development\FootyLinks\CSharpApp\FootyLinks.Processes\PlayerExtractor.cs:line 87
+   at FootyLinks.DataImporter.Program.importPlayer(String sourceFilePath, Int32 sourceReference) in C:\_Development\FootyLinks\CSharpApp\FootyLinks.DataImporter\Program.cs:line 61
+   at FootyLinks.DataImporter.Program.Main(String[] args) in C:\_Development\FootyLinks\CSharpApp\FootyLinks.DataImporter\Program.cs:line 36
+
+
+Source Reference: 12835
+System.InvalidOperationException: Sequence contains more than one matching element
+   at System.Linq.Enumerable.SingleOrDefault[TSource](IEnumerable`1 source, Func`2 predicate)
+   at FootyLinks.Processes.PlayerExtractor.GetCurrentClubName() in C:\_Development\FootyLinks\CSharpApp\FootyLinks.Processes\PlayerExtractor.cs:line 87
+   at FootyLinks.DataImporter.Program.importPlayer(String sourceFilePath, Int32 sourceReference) in C:\_Development\FootyLinks\CSharpApp\FootyLinks.DataImporter\Program.cs:line 61
+   at FootyLinks.DataImporter.Program.Main(String[] args) in C:\_Development\FootyLinks\CSharpApp\FootyLinks.DataImporter\Program.cs:line 36
+
+
+Source Reference: 13135
+System.InvalidOperationException: Sequence contains more than one matching element
+   at System.Linq.Enumerable.SingleOrDefault[TSource](IEnumerable`1 source, Func`2 predicate)
+   at FootyLinks.Processes.PlayerExtractor.GetCurrentClubName() in C:\_Development\FootyLinks\CSharpApp\FootyLinks.Processes\PlayerExtractor.cs:line 87
+   at FootyLinks.DataImporter.Program.importPlayer(String sourceFilePath, Int32 sourceReference) in C:\_Development\FootyLinks\CSharpApp\FootyLinks.DataImporter\Program.cs:line 61
+   at FootyLinks.DataImporter.Program.Main(String[] args) in C:\_Development\FootyLinks\CSharpApp\FootyLinks.DataImporter\Program.cs:line 36
+
+
+Source Reference: 13471
+System.InvalidOperationException: Sequence contains more than one matching element
+   at System.Linq.Enumerable.SingleOrDefault[TSource](IEnumerable`1 source, Func`2 predicate)
+   at FootyLinks.Processes.PlayerExtractor.GetCurrentClubName() in C:\_Development\FootyLinks\CSharpApp\FootyLinks.Processes\PlayerExtractor.cs:line 87
+   at FootyLinks.DataImporter.Program.importPlayer(String sourceFilePath, Int32 sourceReference) in C:\_Development\FootyLinks\CSharpApp\FootyLinks.DataImporter\Program.cs:line 61
+   at FootyLinks.DataImporter.Program.Main(String[] args) in C:\_Development\FootyLinks\CSharpApp\FootyLinks.DataImporter\Program.cs:line 36
+
+

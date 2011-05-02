@@ -79,10 +79,26 @@ namespace FootyLinks.Processes
 			return playerName;
 		}
 
+		public int GetCurrentClubId()
+		{
+			//TODO - extract the club ID from the link href, so this can be used to uniquely identify the club
+			throw new NotImplementedException();
+		}
+
+
 		public string GetCurrentClubName()
 		{
-			if (_playerClubs.Any() == false)
+			/*
+			var currentClubNode = _htmlDocument.DocumentNode.SelectSingleNode("//div[@class='midfielder bull']");
+			if (currentClubNode == null)
 				return null;
+			
+			var currentClubLinkNode = currentClubNode.SelectSingleNode("a");
+			if (currentClubLinkNode == null)
+				return null;
+
+			return currentClubLinkNode.InnerText.Trim();
+			*/
 
 			PlayerClubDto mostRecentClub = _playerClubs
 											.SingleOrDefault(c => c.PlayerLeftDate.HasValue == false);
