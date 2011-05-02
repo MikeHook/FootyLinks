@@ -8,8 +8,8 @@
     <ProjectGuid>{442D603D-1258-4F54-B8F8-06C9C2A3D9D2}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PlayerScraper.App</RootNamespace>
-    <AssemblyName>PlayerScraper.App</AssemblyName>
+    <RootNamespace>PlayerScraper.DataImporter</RootNamespace>
+    <AssemblyName>PlayerScraper.DataImporter</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,9 +31,21 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Castle.Core, Version=2.5.1.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\NHibernate\Required_For_LazyLoading\Castle\Castle.Core.dll</HintPath>
+    </Reference>
     <Reference Include="HtmlAgilityPack, Version=1.4.0.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate, Version=3.1.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\NHibernate\Required_Bins\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.ByteCode.Castle, Version=3.1.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\NHibernate\Required_For_LazyLoading\Castle\NHibernate.ByteCode.Castle.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -53,6 +65,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\FootyLinks.Core\FootyLinks.Core.csproj">
+      <Project>{F3C87A94-D347-4B79-B083-60561DFB6B3F}</Project>
+      <Name>FootyLinks.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FootyLinks.Data\FootyLinks.Data.csproj">
+      <Project>{4154D8F8-3C88-478A-A65A-CEB3ACD857E3}</Project>
+      <Name>FootyLinks.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FootyLinks.Processes\FootyLinks.Processes.csproj">
       <Project>{73168A4A-F11A-488D-B36B-C83E3CCEF1AB}</Project>
       <Name>FootyLinks.Processes</Name>

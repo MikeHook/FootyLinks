@@ -8,7 +8,7 @@ namespace FootyLinks.Core.Domain
 {
 	public class Club : Entity
 	{
-		public Club()
+		protected Club()
 		{
 			CurrentPlayers = new List<Player>();
 			FormerPlayers = new List<Player>();
@@ -26,13 +26,22 @@ namespace FootyLinks.Core.Domain
 		public virtual void AddCurrentPlayer(Player player)
 		{
 			player.CurrentClub = this;
-			CurrentPlayers.Add(player);
+			if (CurrentPlayers.Contains(player) == false)
+			{
+				CurrentPlayers.Add(player);
+			}
 		}
 
 		public virtual void AddFormerPlayer(Player player)
 		{
-			player.FormerClubs.Add(this);
-			FormerPlayers.Add(player);
+			if (player.FormerClubs.Contains(this) == false)
+			{
+				player.FormerClubs.Add(this);
+			}
+			if (FormerPlayers.Contains(player) == false)
+			{
+				FormerPlayers.Add(player);
+			}
 		}
 	}
 }

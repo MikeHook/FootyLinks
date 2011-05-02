@@ -13,7 +13,7 @@ namespace FootyLinks.Data.Mappings
 		{
 			Id(x => x.Id);
 			Map(x => x.Name);
-			Map(x => x.SourceReference);
+			Map(x => x.SourceReference).Unique();
 
 			References(x => x.CurrentClub)
 				.Column("CurrentClub_id");
@@ -23,8 +23,7 @@ namespace FootyLinks.Data.Mappings
 				.Cascade.All()
 				.Inverse()
 				.Table("PlayerClub")			
-				;
-			
+				;					
 	
 		}
 	}

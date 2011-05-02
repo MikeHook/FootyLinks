@@ -31,6 +31,12 @@ namespace FootyLinks.DatabaseDeployer
 		{
 			var sessionFactory = CreateSessionFactory();
 
+			//SaveSampleData(sessionFactory);
+			OutputData(sessionFactory);
+		}
+
+		private static void SaveSampleData(ISessionFactory sessionFactory)
+		{
 			using (var session = sessionFactory.OpenSession())
 			{
 				using (var transaction = session.BeginTransaction())
@@ -38,16 +44,16 @@ namespace FootyLinks.DatabaseDeployer
 					// create a couple of Clubs with some players
 					var liverpool = new Club("Liverpool");
 					var chelsea = new Club("Chelsea");
-					var realMadrid = new Club("Real Madrid");					
+					var realMadrid = new Club("Real Madrid");
 
-					var stevieG = new Player("Steven Gerrard", liverpool);
-					var fernandoTorres = new Player("Fernando Torres", chelsea);
-					var joeCole = new Player("Joe Cole", liverpool);
+					var stevieG = new Player(1, "Steven Gerrard", liverpool);
+					var fernandoTorres = new Player(2, "Fernando Torres", chelsea);
+					var joeCole = new Player(3, "Joe Cole", liverpool);
 					//I know this is not right, just testing the mappings!
-					var xabiAlonso = new Player("Xabi Alonso", realMadrid);
-					var jamieCarragher = new Player("Jamie Carragher", liverpool);
-					var dirkKuyt = new Player("Dirk Kuyt", liverpool);
-					var fatFrank = new Player("Frank Lampard", chelsea);
+					var xabiAlonso = new Player(4, "Xabi Alonso", realMadrid);
+					var jamieCarragher = new Player(5, "Jamie Carragher", liverpool);
+					var dirkKuyt = new Player(6, "Dirk Kuyt", liverpool);
+					var fatFrank = new Player(7, "Frank Lampard", chelsea);
 
 					AddFormerPlayersToClub(liverpool, fernandoTorres, xabiAlonso);
 					AddFormerPlayersToClub(chelsea, joeCole);
@@ -55,28 +61,29 @@ namespace FootyLinks.DatabaseDeployer
 					// save both stores, this saves everything else via cascading
 					session.SaveOrUpdate(liverpool);
 					session.SaveOrUpdate(chelsea);
-					session.SaveOrUpdate(realMadrid);					
-					transaction.Commit();					
+					session.SaveOrUpdate(realMadrid);
+					transaction.Commit();
 				}
 
 				session.Clear();
 			}
+		}
+
+		private static void OutputData(ISessionFactory sessionFactory)
+		{
+			Console.WriteLine("Sample Data:");
 
 			using (var session = sessionFactory.OpenSession())
 			{
-				// retreive all stores and display them
 				using (session.BeginTransaction())
 				{
-					var clubs = session.QueryOver<Club>().Where(p => p.Name == "Liverpool").List();
-					
-					//var clubs = session.CreateCriteria(typeof(Club)).List<Club>();
-
+					//var clubs = session.QueryOver<Club>().Where(p => p.Name == "Liverpool").List();
+					var clubs = session.QueryOver<Club>().List<Club>();
 					foreach (var club in clubs)
 					{
 						WriteClubPretty(club);
 					}
 				}
-
 				Console.ReadKey();
 			}
 		}

@@ -106,7 +106,7 @@ namespace FootyLinks.Processes
 				formerClubs.Add(formerClubDto.ClubName);
 			}
 
-			return formerClubs;
+			return formerClubs.Distinct().ToList();
 		}
 	}
 }
