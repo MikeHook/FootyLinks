@@ -55,10 +55,7 @@ namespace FootyLinks.DatabaseDeployer
 					// save both stores, this saves everything else via cascading
 					session.SaveOrUpdate(liverpool);
 					session.SaveOrUpdate(chelsea);
-					session.SaveOrUpdate(realMadrid);
-
-					//session.Linq<Player>();
-					
+					session.SaveOrUpdate(realMadrid);					
 					transaction.Commit();					
 				}
 
@@ -70,8 +67,9 @@ namespace FootyLinks.DatabaseDeployer
 				// retreive all stores and display them
 				using (session.BeginTransaction())
 				{
-					var clubs = session.CreateCriteria(typeof(Club))
-					  .List<Club>();
+					var clubs = session.QueryOver<Club>().Where(p => p.Name == "Liverpool").List();
+					
+					//var clubs = session.CreateCriteria(typeof(Club)).List<Club>();
 
 					foreach (var club in clubs)
 					{

@@ -31,6 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=3.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -45,6 +49,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DomainModel\BaseObject.cs" />
+    <Compile Include="DomainModel\BaseObjectEqualityComparer.cs" />
+    <Compile Include="DomainModel\DomainSignatureAttribute.cs" />
+    <Compile Include="DomainModel\Entity.cs" />
+    <Compile Include="DomainModel\EntityWithTypedId.cs" />
+    <Compile Include="DomainModel\IEntityWithTypedId.cs" />
+    <Compile Include="DomainModel\IHasAssignedId.cs" />
+    <Compile Include="DomainModel\ValueObject.cs" />
     <Compile Include="Domain\Club.cs" />
     <Compile Include="Domain\Player.cs" />
     <Compile Include="Dto\PlayerClubDto.cs" />

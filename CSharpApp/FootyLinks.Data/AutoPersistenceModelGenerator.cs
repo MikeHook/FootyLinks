@@ -7,6 +7,7 @@ using FootyLinks.Core.Domain;
 using FluentNHibernate.Conventions.Helpers;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Conventions;
+using FootyLinks.Core.DomainModel;
 
 namespace FootyLinks.Data
 {
@@ -18,8 +19,8 @@ namespace FootyLinks.Data
 
 			mappings
 				.AddEntityAssembly(typeof(Player).Assembly)
-				.UseOverridesFromAssembly(typeof(AutoPersistenceModelGenerator).Assembly);
-				//.Where(GetAutoMappingFilter)
+				.UseOverridesFromAssembly(typeof(AutoPersistenceModelGenerator).Assembly)
+				.Where(GetAutoMappingFilter);
 				//.Setup(GetSetup())
 				//.Conventions.Setup(GetConventions);
 
@@ -52,7 +53,7 @@ namespace FootyLinks.Data
 			m.FluentMappings.ExportTo(@"C:\_Development\FootyLinks\Database\Mappings");
 		}
 
-		/*
+		
 		/// <summary>
 		/// Provides a filter for only including types which inherit from the IEntityWithTypedId interface.
 		/// </summary>
@@ -65,9 +66,10 @@ namespace FootyLinks.Data
 				.Any(x => x.IsGenericType
 						  && x.GetGenericTypeDefinition() == typeof(IEntityWithTypedId<>));
 
-			return shouldMap && t.Assembly == typeof(Resource).Assembly;
+			return shouldMap && t.Assembly == typeof(Player).Assembly;
 		}
 
+		/*
 		private static Action<AutoMappingExpressions> GetSetup()
 		{
 			return c =>

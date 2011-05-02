@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using FootyLinks.Core.DomainModel;
 
 namespace FootyLinks.Core.Domain
 {
-	public class Player
+	public class Player : Entity
 	{
 		public Player()
 		{
@@ -18,7 +19,6 @@ namespace FootyLinks.Core.Domain
 			currentClub.AddCurrentPlayer(this);
 		}
 
-		public virtual int Id { get; private set; }
 		public virtual string Name { get; set; }
 		public virtual int SourceReference { get; set; }
 		public virtual Club CurrentClub { get; set; }

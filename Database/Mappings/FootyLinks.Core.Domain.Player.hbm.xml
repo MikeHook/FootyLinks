@@ -1,0 +1,25 @@
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+  <class xmlns="urn:nhibernate-mapping-2.2" name="FootyLinks.Core.Domain.Player, FootyLinks.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" table="`Player`">
+    <id name="Id" type="System.Int32, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Id" />
+      <generator class="identity" />
+    </id>
+    <bag cascade="all" inverse="true" name="FormerClubs" table="PlayerClub">
+      <key foreign-key="FK_FormerClub">
+        <column name="Player_id" />
+      </key>
+      <many-to-many class="FootyLinks.Core.Domain.Club, FootyLinks.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" foreign-key="FK_FormerPlayer">
+        <column name="Club_id" />
+      </many-to-many>
+    </bag>
+    <property name="Name" type="System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Name" />
+    </property>
+    <property name="SourceReference" type="System.Int32, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="SourceReference" />
+    </property>
+    <many-to-one class="FootyLinks.Core.Domain.Club, FootyLinks.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="CurrentClub">
+      <column name="CurrentClub_id" />
+    </many-to-one>
+  </class>
+</hibernate-mapping>

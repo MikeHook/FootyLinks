@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using NHibernate.Cfg;
 using FluentNHibernate.Cfg;
+using NHibernate;
 
 namespace FootyLinks.Data
 {

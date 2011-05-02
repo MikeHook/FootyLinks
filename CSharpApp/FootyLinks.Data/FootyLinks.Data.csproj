@@ -72,6 +72,7 @@
     <Compile Include="AutoPersistenceModelGenerator.cs" />
     <Compile Include="Mappings\ClubMap.cs" />
     <Compile Include="Mappings\PlayerMap.cs" />
+    <Compile Include="NHibernateHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
