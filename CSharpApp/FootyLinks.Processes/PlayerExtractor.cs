@@ -84,13 +84,10 @@ namespace FootyLinks.Processes
 			if (_playerClubs.Any() == false)
 				return null;
 
-			PlayerClubDto mostRecentClub = _playerClubs.First();
+			PlayerClubDto mostRecentClub = _playerClubs
+											.SingleOrDefault(c => c.PlayerLeftDate.HasValue == false);
 
-			//There is a leaving date for their most recent club so they must be retired
-			if (mostRecentClub.PlayerLeftDate != null)
-				return null;
-
-			return mostRecentClub.ClubName;
+			return mostRecentClub != null ? mostRecentClub.ClubName : null;			
 		}
 
 		public IList<string> GetFormerClubs()
