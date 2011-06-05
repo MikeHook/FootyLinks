@@ -14,11 +14,14 @@ namespace FootyLinks.Core.Domain
 			FormerPlayers = new List<Player>();
 		}
 
-		public Club(string name) : this()
+		public Club(int sourceId, string compactName) : this()
 		{
-			Name = name;
+			SourceId = sourceId;
+			CompactName = compactName;		
 		}
-	
+
+		public virtual int SourceId { get; set; }
+		public virtual string CompactName { get; set; }
 		public virtual string Name { get; set; }
 		public virtual IList<Player> CurrentPlayers { get; set; }
 		public virtual IList<Player> FormerPlayers { get; set; }

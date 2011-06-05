@@ -48,8 +48,12 @@ namespace FootyLinks.Processes
 			if (clubTdNodes == null || clubTdNodes.Count() < 3)
 				return playerClub;
 
-			var clubNameNode = clubTdNodes.First();
-			playerClub.ClubName = clubNameNode != null ? clubNameNode.InnerText.Trim() : null;
+			var clubNameTdNode = clubTdNodes.First();
+			playerClub.ClubCompactName = clubNameTdNode != null ? clubNameTdNode.InnerText.Trim() : null;
+
+			var clubSourceId = getClubSourceId(clubNameTdNode.Descendants("a").FirstOrDefault());
+			//Note - This will throw an exception if the sourceId is null, that's fine by me
+			playerClub.ClubSourceId = clubSourceId.Value;
 
 			var playerJoinDateNode = clubTdNodes.ElementAt(1);
 			DateTime joinDate;
@@ -79,50 +83,74 @@ namespace FootyLinks.Processes
 			return playerName;
 		}
 
-		public int GetCurrentClubId()
+		public int? GetCurrentClubSourceId()
 		{
-			//TODO - extract the club ID from the link href, so this can be used to uniquely identify the club
-			throw new NotImplementedException();
+			var clubLinkNode = GetCurrentClubLinkNode();
+			if (clubLinkNode == null)
+				return null;
+
+			return getClubSourceId(clubLinkNode);
 		}
 
-
-		public string GetCurrentClubName()
+		private string GetCurrentClubName()
 		{
-			/*
+			var clubLinkNode = GetCurrentClubLinkNode();
+			if (clubLinkNode == null)
+				return null;
+
+			return clubLinkNode.InnerText;		
+		}
+
+		public PlayerClubDto GetCurrentClubDto()
+		{
+			int? clubSourceId = GetCurrentClubSourceId();
+			if (clubSourceId.HasValue == false)
+				return null;
+
+			var currentClubDto = _playerClubs.FirstOrDefault(c => c.ClubSourceId == GetCurrentClubSourceId());
+			if (currentClubDto == null)
+				return null;
+
+			currentClubDto.ClubName = GetCurrentClubName();
+
+			return currentClubDto;	
+		}
+
+		private int? getClubSourceId(HtmlNode clubLinkNode)
+		{
+			if (clubLinkNode == null)
+				return null;
+
+			var clubLink = clubLinkNode.Attributes["href"];
+			if (clubLink == null || clubLink.Value == null)
+				return null;
+
+			var clubIdString = clubLink.Value.Substring(clubLink.Value.LastIndexOf('=') + 1);
+			return int.Parse(clubIdString);
+		}
+
+		private HtmlNode GetCurrentClubLinkNode()
+		{
 			var currentClubNode = _htmlDocument.DocumentNode.SelectSingleNode("//div[@class='midfielder bull']");
 			if (currentClubNode == null)
 				return null;
-			
+
 			var currentClubLinkNode = currentClubNode.SelectSingleNode("a");
 			if (currentClubLinkNode == null)
 				return null;
 
-			return currentClubLinkNode.InnerText.Trim();
-			*/
-
-			PlayerClubDto mostRecentClub = _playerClubs
-											.SingleOrDefault(c => c.PlayerLeftDate.HasValue == false);
-
-			return mostRecentClub != null ? mostRecentClub.ClubName : null;			
+			return currentClubLinkNode;					
 		}
 
-		public IList<string> GetFormerClubs()
+		public IList<PlayerClubDto> GetFormerClubs()
 		{
-			var formerClubs = new List<string>();
-			if (_playerClubs.Any() == false)
-				return formerClubs;
-
-			var currentClubName = GetCurrentClubName();
-			//The first playerClub may be their currentClub, if so it should be skipped
-			var formerClubDtos = string.IsNullOrEmpty(currentClubName) ?
-									_playerClubs : _playerClubs.Skip(1).Take(_playerClubs.Count - 1);
-
-			foreach (var formerClubDto in formerClubDtos)
+			int? clubSourceId = GetCurrentClubSourceId();
+			if (_playerClubs.Any() && clubSourceId.HasValue)
 			{
-				formerClubs.Add(formerClubDto.ClubName);
+				//Don't include their current club in the former clubs list
+				return _playerClubs.Where(p => p.ClubSourceId != clubSourceId).ToList();
 			}
-
-			return formerClubs.Distinct().ToList();
+			return _playerClubs;			
 		}
 	}
 }

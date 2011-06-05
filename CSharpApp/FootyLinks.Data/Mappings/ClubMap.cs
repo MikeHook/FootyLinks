@@ -12,7 +12,9 @@ namespace FootyLinks.Data.Mappings
 		public ClubMap()
 		{
 			Id(x => x.Id);
+			Map(x => x.SourceId);
 			Map(x => x.Name);
+			Map(x => x.CompactName);
 			
 			HasMany(x => x.CurrentPlayers)
 				.KeyColumn("CurrentClub_id")

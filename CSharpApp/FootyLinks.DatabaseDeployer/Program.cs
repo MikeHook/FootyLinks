@@ -42,9 +42,9 @@ namespace FootyLinks.DatabaseDeployer
 				using (var transaction = session.BeginTransaction())
 				{
 					// create a couple of Clubs with some players
-					var liverpool = new Club("Liverpool");
-					var chelsea = new Club("Chelsea");
-					var realMadrid = new Club("Real Madrid");
+					var liverpool = new Club(1, "Liverpool");
+					var chelsea = new Club(2, "Chelsea");
+					var realMadrid = new Club(3, "Real Madrid");
 
 					var stevieG = new Player(1, "Steven Gerrard", liverpool);
 					var fernandoTorres = new Player(2, "Fernando Torres", chelsea);

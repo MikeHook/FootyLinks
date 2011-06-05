@@ -18,8 +18,14 @@
         <column name="Player_id" />
       </many-to-many>
     </bag>
+    <property name="SourceId" type="System.Int32, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="SourceId" />
+    </property>
     <property name="Name" type="System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
       <column name="Name" />
+    </property>
+    <property name="CompactName" type="System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="CompactName" />
     </property>
   </class>
 </hibernate-mapping>

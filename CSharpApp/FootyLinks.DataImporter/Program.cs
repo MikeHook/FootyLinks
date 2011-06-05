@@ -10,6 +10,7 @@ using System.IO;
 using System.Text.RegularExpressions;
 using FootyLinks.Core.Domain;
 using NHibernate;
+using FootyLinks.Core.Dto;
 
 namespace FootyLinks.DataImporter
 {
@@ -17,6 +18,14 @@ namespace FootyLinks.DataImporter
 	{
 		public static string ErrorLogPath = @"C:\_Development\FootyLinks\ErrorLog\importErrorlog.txt";
 		public static string InfoLogPath = @"C:\_Development\FootyLinks\ErrorLog\importInfolog.txt";
+
+		/*
+		static void Main(string[] args)
+		{
+			string filePath = @"C:\_Development\FootyLinks\PlayersSource\41328.html";
+			Test(filePath);
+		}
+		 */ 
 
 		static void Main(string[] args)
 		{
@@ -49,6 +58,16 @@ namespace FootyLinks.DataImporter
 				writeErrorToFile(0, ex);
 			}
 			
+		}		  
+
+		private static void Test(string sourceFilePath)
+		{
+			HtmlDocument doc = new HtmlDocument();
+			doc.Load(sourceFilePath);
+
+			var playerExtractor = new PlayerExtractor(doc);
+			int? clubId = playerExtractor.GetCurrentClubSourceId();
+			var clubDto = playerExtractor.GetCurrentClubDto();
 		}
 
 		private static void importPlayer(string sourceFilePath, int sourceReference)
@@ -57,18 +76,18 @@ namespace FootyLinks.DataImporter
 			doc.Load(sourceFilePath);
 
 			var playerExtractor = new PlayerExtractor(doc);
-			string playerName = playerExtractor.GetPlayerName();
-			string currentClubName = playerExtractor.GetCurrentClubName();
-			IList<string> formerClubNames = playerExtractor.GetFormerClubs();
 
+			string playerName = playerExtractor.GetPlayerName();
 			//Skip the import if the minimum required info is not present
-			//Could add some info logging here
 			if (string.IsNullOrEmpty(playerName))
 			{
 				writeInfoToFile(sourceReference, "No player name found");
 				return;
-			}
-			if (string.IsNullOrEmpty(currentClubName) && formerClubNames.Count == 0)
+			}			
+
+			var currentClubDto = playerExtractor.GetCurrentClubDto();
+			IList<PlayerClubDto> formerClubDtos = playerExtractor.GetFormerClubs();
+			if (currentClubDto == null && formerClubDtos.Count == 0)
 			{
 				writeInfoToFile(sourceReference, "No current or former clubs found for player: " + playerName);
 				return;
@@ -81,7 +100,7 @@ namespace FootyLinks.DataImporter
 				{
 					try
 					{
-						importPlayerRecord(session, currentClubName, formerClubNames,
+						importPlayerRecord(session, currentClubDto, formerClubDtos,
 											playerName, sourceReference);
 						transaction.Commit();
 					}
@@ -95,22 +114,23 @@ namespace FootyLinks.DataImporter
 			}
 		}
 
-		private static void importPlayerRecord(ISession session, string currentClubName,
-										IList<string> formerClubNames,
+		private static void importPlayerRecord(ISession session, PlayerClubDto currentClubDto,
+										IList<PlayerClubDto> formerClubDtos,
 										string playerName, int sourceReference)
 		{
 			List<Club> formerClubs = new List<Club>();
-			foreach (string formerClubName in formerClubNames)
+			foreach (var formerClubDto in formerClubDtos)
 			{
-				var formerClub = FindCreateClub(session, formerClubName);
+				var formerClub = FindCreateClubBySourceId(session, formerClubDto);
 				session.SaveOrUpdate(formerClub);
 				formerClubs.Add(formerClub);
 			}
 
 			Player player;
-			if (string.IsNullOrEmpty(currentClubName) == false)
+			if (currentClubDto != null)
 			{
-				Club currentClub = FindCreateClub(session, currentClubName);
+				Club currentClub = FindCreateClubBySourceId(session, currentClubDto);
+				currentClub.Name = currentClubDto.ClubName;
 				session.SaveOrUpdate(currentClub);
 				player = FindPlayer(session, sourceReference) ??
 					new Player(sourceReference, playerName, currentClub);
@@ -129,15 +149,15 @@ namespace FootyLinks.DataImporter
 		}
 
 
-		//TODO - Refactor these into Repository classes if they will be used anywhere else		
-		private static Club FindCreateClub(ISession session, string clubName)
+		//TODO - Refactor these into Repository classes if they will be used anywhere else	
+		private static Club FindCreateClubBySourceId(ISession session, PlayerClubDto clubDto)
 		{
-			var clubs = session.QueryOver<Club>().Where(p => p.Name == clubName).List();
+			var clubs = session.QueryOver<Club>().Where(p => p.SourceId == clubDto.ClubSourceId).List();
 
 			if (clubs == null || clubs.Count > 1)
 				return null;
 
-			return clubs.Count == 1 ? clubs[0] : new Club(clubName);
+			return clubs.Count == 1 ? clubs[0] : new Club(clubDto.ClubSourceId, clubDto.ClubCompactName);
 		}
 
 		private static Player FindPlayer(ISession session, int sourceReference)
