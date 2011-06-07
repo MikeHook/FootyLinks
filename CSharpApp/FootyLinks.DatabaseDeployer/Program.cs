@@ -18,10 +18,8 @@ namespace FootyLinks.DatabaseDeployer
 {
 	class Program
 	{
-		//public const string dbFilePath = @"C:\_Development\FootyLinks\Database\footylinks.db";
 		public const string mappingPath = @"C:\_Development\FootyLinks\Database\Mappings\";
-		public const string dbFilePath = "footylinks.db";
-
+		
 		static void Main(string[] args)
 		{
 			SampleDataTest();			
@@ -31,7 +29,7 @@ namespace FootyLinks.DatabaseDeployer
 		{
 			var sessionFactory = CreateSessionFactory();
 
-			//SaveSampleData(sessionFactory);
+			SaveSampleData(sessionFactory);
 			OutputData(sessionFactory);
 		}
 
@@ -90,7 +88,7 @@ namespace FootyLinks.DatabaseDeployer
 
 		private static void WriteClubPretty(Club club)
 		{
-			Console.WriteLine(club.Name);
+			Console.WriteLine(club.CompactName);
 			Console.WriteLine(" Current players:");
 
 			foreach (var player in club.CurrentPlayers)
@@ -121,13 +119,6 @@ namespace FootyLinks.DatabaseDeployer
 							   "NHibernate.ByteCode.Castle.ProxyFactoryFactory, NHibernate.ByteCode.Castle");
 
 			return Fluently.Configure(cfg)
-			  //.Database(
-				//SQLiteConfiguration.Standard
-				//	.InMemory()					
-				 // .UsingFile(dbFilePath)
-				//  .ProxyFactoryFactory(typeof(ProxyFactoryFactory))
-			  //)			  
-
 			  .Mappings(new AutoPersistenceModelGenerator().Run)
 			  .ExposeConfiguration(BuildSchema)
 			  .BuildSessionFactory();
@@ -136,8 +127,8 @@ namespace FootyLinks.DatabaseDeployer
 		private static void BuildSchema(Configuration config)
 		{
 			// delete the existing db on each run
-			if (File.Exists(dbFilePath))
-				File.Delete(dbFilePath);
+			//if (File.Exists(dbFilePath))
+			//	File.Delete(dbFilePath);
 
 			//Note - Don't run this if the db doesn't exist yet
 			new SchemaExport(config).Drop(false, false);
