@@ -85,6 +85,7 @@
     <Content Include="hibernate-sqlserver.cfg.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Queries.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

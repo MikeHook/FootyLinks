@@ -1,0 +1,13 @@
+﻿SELECT        Id, Name, SourceReference, CurrentClub_id
+FROM            Player
+WHERE        (CurrentClub_id IN
+                             (SELECT        Id
+                               FROM            Club
+                               WHERE        (PremierLeague = 1))) OR
+                         (Id IN
+                             (SELECT        PlayerClub.Player_id
+                               FROM            PlayerClub INNER JOIN
+                                                         Club AS Club_1 ON PlayerClub.Club_id = Club_1.Id
+                               WHERE        (Club_1.PremierLeague = 1)))
+                               
+                          
