@@ -31,7 +31,6 @@ public class StartGame extends Activity {
 
     public class StartButtonClickListener implements OnClickListener {
 
-		@Override
 		public void onClick(View v) {
 			
 			Intent intent = new Intent(StartGame.this, OneDegree.class);     

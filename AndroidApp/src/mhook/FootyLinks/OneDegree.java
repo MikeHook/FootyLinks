@@ -2,30 +2,48 @@ package mhook.FootyLinks;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class OneDegree  extends Activity {
+	
+	private FootyLinksDbAdapter footyLinksDbAdapter;
+    private TextView startPlayerTextView;
 	
 	/** Called when the activity is first created. */
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.one_degree);       
+        setContentView(R.layout.one_degree);
         
+        footyLinksDbAdapter = new FootyLinksDbAdapter(this);
+        
+        footyLinksDbAdapter.open();
+        
+        startPlayerTextView = (TextView) findViewById(R.id.text_start_player);   
+        
+        populateFields();
         
         Button guess1Button = (Button) findViewById(R.id.button_guess1);        
         guess1Button.setOnClickListener(new Guess1ButtonClickListener());        
     } 
 	
+    private void populateFields() {   	
+    	
+    	Cursor footyLinksDbCursor = footyLinksDbAdapter.fetchPlayer(49842);
+    	String startPlayerName = footyLinksDbCursor.getString(
+    			footyLinksDbCursor.getColumnIndexOrThrow(FootyLinksDbAdapter.PlayerColumns.Name));
+    	
+    	startPlayerTextView.setText(startPlayerName);
+    }
+	
     public class Guess1ButtonClickListener implements OnClickListener {
 
-		@Override
 		public void onClick(View v) {
 			
 			Intent pickClubIntent = new Intent(OneDegree.this, PickClub.class);  			
