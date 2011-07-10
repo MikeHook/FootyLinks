@@ -18,5 +18,6 @@
     <string name="text_game_title">Can you link these players?</string>
     <string name="text_previously_played">used to play for</string>
 	<string name="text_squad_includes">whose squad includes</string>
+	<string name="guess_string"><u>what club?</u></string> 
 <!-- one degree strings end-->
 </resources>

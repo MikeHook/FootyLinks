@@ -11,6 +11,8 @@ import android.widget.Toast;
 
 public class PickClub  extends Activity {
 	
+	public static String ClubIndex = "ClubIndex";
+	
 	/** Called when the activity is first created. */
 	@Override
     public void onCreate(Bundle savedInstanceState) {
@@ -25,7 +27,7 @@ public class PickClub  extends Activity {
                 //Toast.makeText(PickClub.this, "" + position, Toast.LENGTH_SHORT).show();                
                 
     			Intent oneDegreeIntent = new Intent(PickClub.this, OneDegree.class);
-    			oneDegreeIntent.putExtra("ClubId", position);
+    			oneDegreeIntent.putExtra(ClubIndex, position);
     			setResult(1, oneDegreeIntent);
                 finish();    			
             }
