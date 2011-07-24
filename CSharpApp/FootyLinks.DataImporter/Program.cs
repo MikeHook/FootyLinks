@@ -24,14 +24,14 @@ namespace FootyLinks.DataImporter
 		{
 			string filePath = @"C:\_Development\FootyLinks\PlayersSource\41328.html";
 			Test(filePath);
-		}
-		 */ 
+		}*/
+		 
 
+		
 		static void Main(string[] args)
 		{
 			try
 			{
-				//string filePath = @"C:\_Development\FootyLinks\PlayersSource\41328.html";
 				string sourceFolder = @"C:\_Development\FootyLinks\PlayersSource\";
 				var playerFiles = Directory.GetFiles(sourceFolder);
 
@@ -58,7 +58,8 @@ namespace FootyLinks.DataImporter
 				writeErrorToFile(0, ex);
 			}
 			
-		}		  
+		}
+		  
 
 		private static void Test(string sourceFilePath)
 		{
@@ -66,7 +67,9 @@ namespace FootyLinks.DataImporter
 			doc.Load(sourceFilePath);
 
 			var playerExtractor = new PlayerExtractor(doc);
+			int? squadNo = playerExtractor.GetSquadNumber();
 			int? clubId = playerExtractor.GetCurrentClubSourceId();
+
 			var clubDto = playerExtractor.GetCurrentClubDto();
 		}
 
@@ -101,7 +104,8 @@ namespace FootyLinks.DataImporter
 					try
 					{
 						importPlayerRecord(session, currentClubDto, formerClubDtos,
-											playerName, sourceReference);
+											playerName, sourceReference,
+											playerExtractor.GetSquadNumber());
 						transaction.Commit();
 					}
 					catch (Exception ex)
@@ -116,7 +120,7 @@ namespace FootyLinks.DataImporter
 
 		private static void importPlayerRecord(ISession session, PlayerClubDto currentClubDto,
 										IList<PlayerClubDto> formerClubDtos,
-										string playerName, int sourceReference)
+										string playerName, int sourceReference, int? squadNumber)
 		{
 			List<Club> formerClubs = new List<Club>();
 			foreach (var formerClubDto in formerClubDtos)
@@ -134,6 +138,7 @@ namespace FootyLinks.DataImporter
 				session.SaveOrUpdate(currentClub);
 				player = FindPlayer(session, sourceReference) ??
 					new Player(sourceReference, playerName, currentClub);
+				player.SquadNumber = squadNumber;
 				foreach (var club in formerClubs)
 				{
 					club.AddFormerPlayer(player);

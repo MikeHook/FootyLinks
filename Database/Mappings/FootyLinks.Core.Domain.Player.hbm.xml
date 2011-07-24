@@ -18,6 +18,9 @@
     <property access="backfield" name="SourceReference" type="System.Int32, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
       <column name="SourceReference" unique="true" />
     </property>
+    <property name="SquadNumber" type="System.Nullable`1[[System.Int32, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="SquadNumber" not-null="false" />
+    </property>
     <many-to-one class="FootyLinks.Core.Domain.Club, FootyLinks.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="CurrentClub">
       <column name="CurrentClub_id" />
     </many-to-one>

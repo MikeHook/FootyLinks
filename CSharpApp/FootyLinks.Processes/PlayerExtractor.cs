@@ -83,6 +83,27 @@ namespace FootyLinks.Processes
 			return playerName;
 		}
 
+		public int? GetSquadNumber()
+		{
+			//Retrieve the player name from the 'clubInfo' table
+			var imageHeadTableNode = _htmlDocument.DocumentNode.SelectSingleNode("//table[@class='imageHead']");
+			if (imageHeadTableNode == null)
+				return null;
+
+			var squadNumberTdNodes = imageHeadTableNode.Descendants("td");
+			var squadNumberTdNode = squadNumberTdNodes.ElementAtOrDefault(1);
+			if (squadNumberTdNode == null)
+				return null;
+
+			string squadNumberString = squadNumberTdNode.InnerText.Trim().Split('.').FirstOrDefault();
+
+			if (string.IsNullOrEmpty(squadNumberString))
+				return null;
+
+			int squadNumber;
+			return int.TryParse(squadNumberString, out squadNumber) ? squadNumber : (int?)null;			
+		}
+
 		public int? GetCurrentClubSourceId()
 		{
 			var clubLinkNode = GetCurrentClubLinkNode();
