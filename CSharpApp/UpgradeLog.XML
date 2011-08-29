@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="FootyLinks">
+</Property><Property Name="Solution File" Value="C:\_Development\FootyLinks\CSharpApp\FootyLinks.sln">
+</Property><Property Name="Date" Value="24 July 2011">
+</Property><Property Name="Time" Value="19:19">
+</Property></Properties><Event ErrorLevel="0" Project="FootyLinks.Processes" Source="FootyLinks.Processes\FootyLinks.Processes.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="FootyLinks.Processes" Source="FootyLinks.Processes\FootyLinks.Processes.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="FootyLinks.Core" Source="FootyLinks.Core\FootyLinks.Core.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="FootyLinks.Core" Source="FootyLinks.Core\FootyLinks.Core.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="FootyLinks.Data" Source="FootyLinks.Data\FootyLinks.Data.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="FootyLinks.Data" Source="FootyLinks.Data\FootyLinks.Data.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="FootyLinks.DatabaseDeployer" Source="FootyLinks.DatabaseDeployer\FootyLinks.DatabaseDeployer.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="FootyLinks.DatabaseDeployer" Source="FootyLinks.DatabaseDeployer\FootyLinks.DatabaseDeployer.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="PlayerScraper.DataImporter" Source="FootyLinks.DataImporter\PlayerScraper.DataImporter.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="PlayerScraper.DataImporter" Source="FootyLinks.DataImporter\PlayerScraper.DataImporter.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="FootyLinks.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="FootyLinks.sln" Description="Converted">
+</Event><Event ErrorLevel="0" Project="FootyLinks.Processes" Source="FootyLinks.Processes\FootyLinks.Processes.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="FootyLinks.Core" Source="FootyLinks.Core\FootyLinks.Core.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="FootyLinks.Data" Source="FootyLinks.Data\FootyLinks.Data.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="FootyLinks.DatabaseDeployer" Source="FootyLinks.DatabaseDeployer\FootyLinks.DatabaseDeployer.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="PlayerScraper.DataImporter" Source="FootyLinks.DataImporter\PlayerScraper.DataImporter.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event></UpgradeLog>

@@ -11,7 +11,7 @@ namespace FootyLinks.Data.Mappings
 	{
 		public ClubMap()
 		{
-			Id(x => x.Id);
+			Id(x => x.Id).GeneratedBy.Increment();
 			Map(x => x.SourceId);
 			Map(x => x.Name);
 			Map(x => x.CompactName);

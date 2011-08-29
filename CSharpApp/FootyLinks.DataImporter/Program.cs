@@ -22,10 +22,15 @@ namespace FootyLinks.DataImporter
 		/*
 		static void Main(string[] args)
 		{
-			string filePath = @"C:\_Development\FootyLinks\PlayersSource\41328.html";
-			Test(filePath);
-		}*/
-		 
+			//Reina: 24340		 
+			string filePath = @"C:\_Development\FootyLinks\PlayersSource\24340.html";
+			//Test(filePath);
+
+			var playerFileInfo = new FileInfo(filePath);
+			int sourceReference = int.Parse(playerFileInfo.Name.Split('.')[0]);
+			importPlayer(filePath, sourceReference);
+		}
+		 */
 
 		
 		static void Main(string[] args)
@@ -59,7 +64,7 @@ namespace FootyLinks.DataImporter
 			}
 			
 		}
-		  
+		
 
 		private static void Test(string sourceFilePath)
 		{
