@@ -95,9 +95,9 @@ namespace FootyLinks.DataImporter
 
 			var currentClubDto = playerExtractor.GetCurrentClubDto();
 			IList<PlayerClubDto> formerClubDtos = playerExtractor.GetFormerClubs();
-			if (currentClubDto == null && formerClubDtos.Count == 0)
+			if (currentClubDto == null || formerClubDtos.Count == 0)
 			{
-				writeInfoToFile(sourceReference, "No current or former clubs found for player: " + playerName);
+				writeInfoToFile(sourceReference, "Current or former clubs not found for player: " + playerName);
 				return;
 			}
 

@@ -1,8 +1,8 @@
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
   <class xmlns="urn:nhibernate-mapping-2.2" name="FootyLinks.Core.Domain.Club, FootyLinks.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" table="`Club`">
     <id name="Id" type="System.Int32, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-      <column name="Id" />
-      <generator class="identity" />
+      <column name="_id" />
+      <generator class="increment" />
     </id>
     <bag cascade="all" inverse="true" name="CurrentPlayers">
       <key foreign-key="FK_CurrentClub">

@@ -11,7 +11,7 @@ namespace FootyLinks.Data.Mappings
 	{
 		public PlayerMap()
 		{
-			Id(x => x.Id).GeneratedBy.Increment();
+			Id(x => x.Id).Column("_id").GeneratedBy.Increment();
 			Map(x => x.Name);
 			Map(x => x.SourceReference).Unique();
 			Map(x => x.SquadNumber).Nullable();
