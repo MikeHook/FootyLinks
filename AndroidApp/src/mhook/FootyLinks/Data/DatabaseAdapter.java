@@ -37,6 +37,7 @@ public class DatabaseAdapter {
 	    public static final String Name = "Name";
 	    public static final String CurrentClub_id = "CurrentClub_id";
 	    public static final String _id = "_id";	
+	    public static final String SquadNumber = "SquadNumber";	
 	}
 
     private static final String TAG = "DatabaseAdapter";
@@ -90,7 +91,8 @@ public class DatabaseAdapter {
         Cursor mCursor =
             sqlLiteDatabase.query(true, Tables.Player, 
             		new String[] {PlayerColumns._id, PlayerColumns.Name, PlayerColumns.CurrentClub_id}, 
-            		PlayerColumns.CurrentClub_id + "=" + clubId, 
+            		PlayerColumns.CurrentClub_id + "=" + clubId + 
+            		" AND " + PlayerColumns.SquadNumber + "< 26" , 
             		null, null, null, null, null);
         if (mCursor != null) {
     		moveCursorToRandomPosition(mCursor); 
