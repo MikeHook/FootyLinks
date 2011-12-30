@@ -4,14 +4,45 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 
-class FootyLinksSQLLiteHelper extends SQLiteOpenHelper {    
+public class FootyLinksSQLLiteHelper extends SQLiteOpenHelper {    
 	
+	public static class Tables {
+		public static final String Club = "Club";
+		public static final String Player = "Player";
+		public static final String PlayerClub = "PlayerClub";
+		public static final String Score = "Score";		
+	}
+
+	public static class ClubColumns {
+	    public static final String _id = "_id";		
+	    public static final String Name = "Name";
+	    public static final String CompactName = "CompactName";
+	}
+
+	public static class PlayerClubColumns {
+	    public static final String Club_id = "Club_id";
+	    public static final String Player_id = "Player_id";
+	}
+
+	public static class PlayerColumns {
+	    public static final String Name = "Name";
+	    public static final String CurrentClub_id = "CurrentClub_id";
+	    public static final String _id = "_id";	
+	    public static final String SquadNumber = "SquadNumber";	
+	}
+	
+	public static class ScoreColumns {
+	    public static final String HighScore = "HighScore";
+	    public static final String _id = "_id";	
+	}
+
 	private Context myContext;
     private static final String DATABASE_FOLDER = "/data/data/mhook.FootyLinks/databases/";
     private static final String DATABASE_NAME = "footylinks.db";
@@ -43,7 +74,7 @@ class FootyLinksSQLLiteHelper extends SQLiteOpenHelper {
     public SQLiteDatabase openDatabase() throws SQLException {
     	//Open the database
         String myPath = DATABASE_FOLDER + DATABASE_NAME;            
-    	return SQLiteDatabase.openDatabase(myPath, null, SQLiteDatabase.OPEN_READONLY);     
+    	return SQLiteDatabase.openDatabase(myPath, null, SQLiteDatabase.OPEN_READWRITE);     
     }
 	
     //Check if the database already exists to avoid re-copying the file each time you open the application.
@@ -93,7 +124,21 @@ class FootyLinksSQLLiteHelper extends SQLiteOpenHelper {
     }
 
 	@Override
-	public void onCreate(SQLiteDatabase db) {	}
+	public void onCreate(SQLiteDatabase db) 
+	{
+	    /*
+		String createScoreTable =
+	        "create table "+ Tables.Score +" (_id integer primary key autoincrement, "
+	        + ScoreColumns.HighScore +" integer not null);";
+		
+		db.execSQL(createScoreTable);
+		
+        ContentValues initialValues = new ContentValues();
+        initialValues.put(ScoreColumns.HighScore, 0);
+       
+        db.insert(Tables.Score, null, initialValues);
+		*/
+	}
 
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {	}

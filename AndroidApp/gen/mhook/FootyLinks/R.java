@@ -37,18 +37,19 @@ public final class R {
         public static final int wolves=0x7f020014;
     }
     public static final class id {
-        public static final int button_continue=0x7f060007;
-        public static final int button_guess1=0x7f060003;
-        public static final int button_restart=0x7f060006;
-        public static final int button_start=0x7f06000b;
-        public static final int gridview_pick_club=0x7f060008;
-        public static final int spinner_difficulty=0x7f06000a;
-        public static final int spinner_difficulty_label=0x7f060009;
-        public static final int text_end_player=0x7f060005;
-        public static final int text_game_title=0x7f060000;
-        public static final int text_previously_played=0x7f060002;
-        public static final int text_squad_includes=0x7f060004;
-        public static final int text_start_player=0x7f060001;
+        public static final int button_guess1=0x7f060004;
+        public static final int button_quit=0x7f060008;
+        public static final int button_restart=0x7f060007;
+        public static final int button_start=0x7f06000c;
+        public static final int gridview_pick_club=0x7f060009;
+        public static final int spinner_difficulty=0x7f06000b;
+        public static final int spinner_difficulty_label=0x7f06000a;
+        public static final int text_end_player=0x7f060006;
+        public static final int text_game_title=0x7f060001;
+        public static final int text_previously_played=0x7f060003;
+        public static final int text_score=0x7f060000;
+        public static final int text_squad_includes=0x7f060005;
+        public static final int text_start_player=0x7f060002;
     }
     public static final class layout {
         public static final int one_degree=0x7f030000;

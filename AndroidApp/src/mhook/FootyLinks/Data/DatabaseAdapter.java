@@ -5,6 +5,7 @@ import java.io.IOException;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
@@ -15,32 +16,7 @@ import android.util.Log;
  */
 public class DatabaseAdapter {
 
-	public static class Tables {
-		public static final String Club = "Club";
-		public static final String Player = "Player";
-		public static final String PlayerClub = "PlayerClub";
-		
-	}
-	
-	public static class ClubColumns {
-	    public static final String _id = "_id";		
-	    public static final String Name = "Name";
-	    public static final String CompactName = "CompactName";
-	}
-	
-	public static class PlayerClubColumns {
-	    public static final String Club_id = "Club_id";
-	    public static final String Player_id = "Player_id";
-	}
-	
-	public static class PlayerColumns {
-	    public static final String Name = "Name";
-	    public static final String CurrentClub_id = "CurrentClub_id";
-	    public static final String _id = "_id";	
-	    public static final String SquadNumber = "SquadNumber";	
-	}
-
-    private static final String TAG = "DatabaseAdapter";
+	private static final String TAG = "DatabaseAdapter";
     private SQLiteDatabase sqlLiteDatabase;    
     private final Context context;
 
@@ -63,13 +39,49 @@ public class DatabaseAdapter {
     	sqlLiteDatabase.close();    
     }
     
+    public boolean updateScore(int newScore) {
+        ContentValues args = new ContentValues();
+        args.put(FootyLinksSQLLiteHelper.ScoreColumns.HighScore, newScore);
+
+        return sqlLiteDatabase.update(FootyLinksSQLLiteHelper.Tables.Score, 
+        		args, FootyLinksSQLLiteHelper.ScoreColumns._id + "=" + 0, null) > 0;
+    }
+    
+    public int getScore() {
+    	
+    	long rows = DatabaseUtils.queryNumEntries(sqlLiteDatabase, FootyLinksSQLLiteHelper.Tables.Score);
+    	
+    	long rowId;
+    	if (rows == 0)
+    	{
+        	//If no score exists then insert one
+        	ContentValues initialValues = new ContentValues();
+        	initialValues.put(FootyLinksSQLLiteHelper.ScoreColumns._id, 0);
+        	initialValues.put(FootyLinksSQLLiteHelper.ScoreColumns.HighScore, 0);           
+            rowId = sqlLiteDatabase.insert(FootyLinksSQLLiteHelper.Tables.Score, null, initialValues);     	
+    	}
+    	
+    	Cursor mCursor =
+            sqlLiteDatabase.query(true, FootyLinksSQLLiteHelper.Tables.Score, 
+            		new String[] {	FootyLinksSQLLiteHelper.ScoreColumns._id , 
+            						FootyLinksSQLLiteHelper.ScoreColumns.HighScore}, 
+            		FootyLinksSQLLiteHelper.ScoreColumns._id + "=0", 
+            		null, null, null, null, null);        
+        if (mCursor != null) {
+            mCursor.moveToFirst();
+            return mCursor.getInt(1);
+        }     
+        
+        return 0;
+    }
+    
     //Fetch the clubId for the passed in compactName    
     public int getClubId(String compactName) throws SQLException {
 
         Cursor mCursor =
-            sqlLiteDatabase.query(true, Tables.Club, 
-            		new String[] {ClubColumns._id}, 
-            		ClubColumns.CompactName + "= '" + compactName + "'", 
+            sqlLiteDatabase.query(true, FootyLinksSQLLiteHelper.Tables.Club, 
+            		new String[] {FootyLinksSQLLiteHelper.ClubColumns._id}, 
+            		FootyLinksSQLLiteHelper.ClubColumns.CompactName + "= '" + compactName + "'", 
             		null, null, null, null, null);
         if (mCursor != null) {
             mCursor.moveToFirst();
@@ -89,10 +101,10 @@ public class DatabaseAdapter {
     public Cursor getPlayerByCurrentClub(int clubId) throws SQLException {
 
         Cursor mCursor =
-            sqlLiteDatabase.query(true, Tables.Player, 
-            		new String[] {PlayerColumns._id, PlayerColumns.Name, PlayerColumns.CurrentClub_id}, 
-            		PlayerColumns.CurrentClub_id + "=" + clubId + 
-            		" AND " + PlayerColumns.SquadNumber + "< 26" , 
+            sqlLiteDatabase.query(true, FootyLinksSQLLiteHelper.Tables.Player, 
+            		new String[] {FootyLinksSQLLiteHelper.PlayerColumns._id, FootyLinksSQLLiteHelper.PlayerColumns.Name, FootyLinksSQLLiteHelper.PlayerColumns.CurrentClub_id}, 
+            		FootyLinksSQLLiteHelper.PlayerColumns.CurrentClub_id + "=" + clubId + 
+            		" AND " + FootyLinksSQLLiteHelper.PlayerColumns.SquadNumber + "< 26" , 
             		null, null, null, null, null);
         if (mCursor != null) {
     		moveCursorToRandomPosition(mCursor); 
@@ -116,9 +128,9 @@ public class DatabaseAdapter {
     	}
     	
     	Cursor mCursor =
-            sqlLiteDatabase.query(true, Tables.Player, 
-            		new String[] {PlayerColumns._id, PlayerColumns.Name, PlayerColumns.CurrentClub_id}, 
-            		PlayerColumns._id + "=" + playerId, 
+            sqlLiteDatabase.query(true, FootyLinksSQLLiteHelper.Tables.Player, 
+            		new String[] {FootyLinksSQLLiteHelper.PlayerColumns._id, FootyLinksSQLLiteHelper.PlayerColumns.Name, FootyLinksSQLLiteHelper.PlayerColumns.CurrentClub_id}, 
+            		FootyLinksSQLLiteHelper.PlayerColumns._id + "=" + playerId, 
             		null, null, null, null, null);
         if (mCursor != null) {
             mCursor.moveToFirst();
@@ -129,8 +141,8 @@ public class DatabaseAdapter {
     private int getPlayerIdByFormerClubId(int formerClubId) 
     {
     	Cursor mCursor =
-            sqlLiteDatabase.query(true, Tables.PlayerClub, new String[] {PlayerClubColumns.Player_id}, 
-            		PlayerClubColumns.Club_id + "=" + formerClubId, 
+            sqlLiteDatabase.query(true, FootyLinksSQLLiteHelper.Tables.PlayerClub, new String[] {FootyLinksSQLLiteHelper.PlayerClubColumns.Player_id}, 
+            		FootyLinksSQLLiteHelper.PlayerClubColumns.Club_id + "=" + formerClubId, 
             		null, null, null, null, null);
         
     	if (mCursor != null) {

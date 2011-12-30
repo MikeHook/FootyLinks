@@ -1,9 +1,12 @@
 package mhook.FootyLinks;
 
 import mhook.FootyLinks.Data.DatabaseAdapter;
+import mhook.FootyLinks.Data.FootyLinksSQLLiteHelper;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -53,9 +56,10 @@ public class OneDegree  extends Activity {
         footyLinksDbAdapter = new DatabaseAdapter(this);        
         footyLinksDbAdapter.open();        
         populateFields();
+        populateScore();
         
         TextView guess1Button = (TextView) findViewById(R.id.button_guess1);        
-        guess1Button.setOnClickListener(new Guess1ButtonClickListener());        
+        guess1Button.setOnClickListener(new Guess1ButtonClickListener());
     } 
 	
     private void populateFields() {   	
@@ -65,18 +69,25 @@ public class OneDegree  extends Activity {
     	
     	Cursor startPlayerDbCursor = footyLinksDbAdapter.getPlayerByFormerClub(clubId);
     	String startPlayerName = startPlayerDbCursor.getString(
-    			startPlayerDbCursor.getColumnIndexOrThrow(DatabaseAdapter.PlayerColumns.Name));
+    			startPlayerDbCursor.getColumnIndexOrThrow(FootyLinksSQLLiteHelper.PlayerColumns.Name));
     	
     	TextView startPlayerTextView = (TextView) findViewById(R.id.text_start_player);
     	startPlayerTextView.setText(startPlayerName);
     	
     	Cursor endPlayerDbCursor = footyLinksDbAdapter.getPlayerByCurrentClub(clubId);
     	String endPlayerName = endPlayerDbCursor.getString(
-    			endPlayerDbCursor.getColumnIndexOrThrow(DatabaseAdapter.PlayerColumns.Name));
+    			endPlayerDbCursor.getColumnIndexOrThrow(FootyLinksSQLLiteHelper.PlayerColumns.Name));
     	
     	TextView endPlayerTextView = (TextView) findViewById(R.id.text_end_player);
     	endPlayerTextView.setText(endPlayerName);
     }
+    
+	private void populateScore()
+	{
+		String scoreText = "Your score: " + footyLinksDbAdapter.getScore();
+        TextView scoreTextView = (TextView) findViewById(R.id.text_score);
+        scoreTextView.setText(scoreText);		
+	}
 	
     public class Guess1ButtonClickListener implements OnClickListener {
 
@@ -105,6 +116,7 @@ public class OneDegree  extends Activity {
 			{
 				Toast.makeText(OneDegree.this, "Congrats, you selected the correct club!", 
 						Toast.LENGTH_SHORT).show(); 
+				updateViewForCorrectAnswer();
 			}
 			else
 			{
@@ -114,6 +126,20 @@ public class OneDegree  extends Activity {
 			break;
 		}
     }
+    
+    protected void updateViewForCorrectAnswer()
+    {
+    	//Increment the score
+		int score = footyLinksDbAdapter.getScore();
+		footyLinksDbAdapter.updateScore(score+1);
+		populateScore();	
+		
+		//Update the guess button with the answer and disable clicking 
+		TextView guess1Button = (TextView) findViewById(R.id.button_guess1);
+		guess1Button.setText(Clubs[ClubIndex]);
+		guess1Button.setClickable(false);
+		guess1Button.setTextColor(Color.GREEN);		
+    }    
 }
 
 
