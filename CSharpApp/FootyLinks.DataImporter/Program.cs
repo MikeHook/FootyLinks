@@ -18,6 +18,15 @@ namespace FootyLinks.DataImporter
 	{
 		public static string ErrorLogPath = @"C:\_Development\FootyLinks\ErrorLog\importErrorlog.txt";
 		public static string InfoLogPath = @"C:\_Development\FootyLinks\ErrorLog\importInfolog.txt";
+		public static bool OnlyImportPremiership = true;
+
+		private static List<string> _premiershipClubs = new List<string>() 
+		{ 
+			"Man City", "Man Utd", "Tottenham", "Chelsea", "Arsenal",
+			"Liverpool", "Newcastle", "Stoke", "West Brom", "Everton",
+			"Norwich", "Aston Villa", "Fulham", "Swansea", "Sunderland",
+			"QPR", "Wolves", "Wigan", "Bolton", "Blackburn"
+		};
 
 		/*
 		static void Main(string[] args)
@@ -28,11 +37,9 @@ namespace FootyLinks.DataImporter
 
 			var playerFileInfo = new FileInfo(filePath);
 			int sourceReference = int.Parse(playerFileInfo.Name.Split('.')[0]);
-			importPlayer(filePath, sourceReference);
-		}
-		 */
-
-		
+			importPlayer(filePath, sourceReference, true);
+		}*/
+		 
 		static void Main(string[] args)
 		{
 			try
@@ -47,7 +54,7 @@ namespace FootyLinks.DataImporter
 					int sourceReference = int.Parse(playerFileInfo.Name.Split('.')[0]);
 					try
 					{
-						importPlayer(playerFile, sourceReference);
+						importPlayer(playerFile, sourceReference, true, OnlyImportPremiership);
 						playersImported++;
 						if (playersImported % 100 == 0)
 							Console.WriteLine(string.Format("Imported {0} players", playersImported));
@@ -73,12 +80,13 @@ namespace FootyLinks.DataImporter
 
 			var playerExtractor = new PlayerExtractor(doc);
 			int? squadNo = playerExtractor.GetSquadNumber();
+			int? age = playerExtractor.GetPlayerAge();
 			int? clubId = playerExtractor.GetCurrentClubSourceId();
 
 			var clubDto = playerExtractor.GetCurrentClubDto();
 		}
 
-		private static void importPlayer(string sourceFilePath, int sourceReference)
+		private static void importPlayer(string sourceFilePath, int sourceReference, bool strict, bool onlyImportPremiership)
 		{
 			HtmlDocument doc = new HtmlDocument();
 			doc.Load(sourceFilePath);
@@ -91,14 +99,49 @@ namespace FootyLinks.DataImporter
 			{
 				writeInfoToFile(sourceReference, "No player name found");
 				return;
-			}			
+			}
 
+			int? playerSquadNumber = playerExtractor.GetSquadNumber();
+			int? playerAge = playerExtractor.GetPlayerAge();
 			var currentClubDto = playerExtractor.GetCurrentClubDto();
+
+			if (strict)
+			{
+				//We are going to be more strict on the import rules here and only allow players with:
+				//A squad number, age and current club to be imported				
+				if (playerSquadNumber == null)
+				{
+					writeInfoToFile(sourceReference, "No squad number found for player: " + playerName);
+					return;
+				}				
+				if (playerAge == null)
+				{
+					writeInfoToFile(sourceReference, "No age found for player: " + playerName);
+					return;
+				}
+
+				if (currentClubDto == null)
+				{
+					writeInfoToFile(sourceReference, "Current club not found for player: " + playerName);
+					return;
+				}
+			}		
+
 			IList<PlayerClubDto> formerClubDtos = playerExtractor.GetFormerClubs();
 			if (currentClubDto == null || formerClubDtos.Count == 0)
 			{
 				writeInfoToFile(sourceReference, "Current or former clubs not found for player: " + playerName);
 				return;
+			}
+
+			if (OnlyImportPremiership)
+			{
+				bool presentOrPastPremierPlayer = PresentOrPastPremierPlayer(currentClubDto, formerClubDtos);
+				if (presentOrPastPremierPlayer == false)
+				{
+					writeInfoToFile(sourceReference, "Player has not played in premiership: " + playerName);
+					return;
+				}
 			}
 
 			//Import the Player and clubs
@@ -108,9 +151,8 @@ namespace FootyLinks.DataImporter
 				{
 					try
 					{
-						importPlayerRecord(session, currentClubDto, formerClubDtos,
-											playerName, sourceReference,
-											playerExtractor.GetSquadNumber());
+						importPlayerRecord(session, currentClubDto, formerClubDtos, playerName, sourceReference,
+											playerSquadNumber, playerAge);
 						transaction.Commit();
 					}
 					catch (Exception ex)
@@ -123,9 +165,20 @@ namespace FootyLinks.DataImporter
 			}
 		}
 
+		private static bool PresentOrPastPremierPlayer(PlayerClubDto currentClubDto, IList<PlayerClubDto> formerClubDtos)
+		{
+			if (currentClubDto != null && _premiershipClubs.Contains(currentClubDto.ClubCompactName))			
+				return true; 			
+
+			if (formerClubDtos.Count > 0 && formerClubDtos.Any(c => _premiershipClubs.Contains(c.ClubCompactName)))
+				return true;
+
+			return false;
+		}
+
 		private static void importPlayerRecord(ISession session, PlayerClubDto currentClubDto,
 										IList<PlayerClubDto> formerClubDtos,
-										string playerName, int sourceReference, int? squadNumber)
+										string playerName, int sourceReference, int? squadNumber, int? age)
 		{
 			List<Club> formerClubs = new List<Club>();
 			foreach (var formerClubDto in formerClubDtos)
@@ -143,7 +196,6 @@ namespace FootyLinks.DataImporter
 				session.SaveOrUpdate(currentClub);
 				player = FindPlayer(session, sourceReference) ??
 					new Player(sourceReference, playerName, currentClub);
-				player.SquadNumber = squadNumber;
 				foreach (var club in formerClubs)
 				{
 					club.AddFormerPlayer(player);
@@ -154,6 +206,9 @@ namespace FootyLinks.DataImporter
 				player = FindPlayer(session, sourceReference) ??
 					new Player(sourceReference, playerName, formerClubs);
 			}
+
+			player.SquadNumber = squadNumber;
+			player.Age = age;
 
 			session.SaveOrUpdate(player);
 		}

@@ -15,6 +15,7 @@ namespace FootyLinks.Data.Mappings
 			Map(x => x.Name);
 			Map(x => x.SourceReference).Unique();
 			Map(x => x.SquadNumber).Nullable();
+			Map(x => x.Age).Nullable();
 
 			References(x => x.CurrentClub)
 				.Column("CurrentClub_id");

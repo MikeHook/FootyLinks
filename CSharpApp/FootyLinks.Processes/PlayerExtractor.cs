@@ -11,6 +11,7 @@ namespace FootyLinks.Processes
 	{
 		private HtmlDocument _htmlDocument;
 		private IList<PlayerClubDto> _playerClubs;
+		private const string _clubInfoXpath = "//table[@class='clubInfo']";
 
 		public PlayerExtractor(HtmlDocument htmlDocument)
 		{
@@ -74,13 +75,36 @@ namespace FootyLinks.Processes
 		public string GetPlayerName()
 		{
 			//Retrieve the player name from the 'clubInfo' table
-			var playerTableNode = _htmlDocument.DocumentNode.SelectSingleNode("//table[@class='clubInfo']");
+			var playerTableNode = _htmlDocument.DocumentNode.SelectSingleNode(_clubInfoXpath);
 			if (playerTableNode == null)
 				return null;
 
 			var playerTdNodes = playerTableNode.Descendants("td");
 			var playerName = playerTdNodes.First().InnerText.Trim();
 			return playerName;
+		}
+
+		public int? GetPlayerAge()
+		{
+			//Retrieve the player name from the 'clubInfo' table
+			var playerTableNode = _htmlDocument.DocumentNode.SelectSingleNode(_clubInfoXpath);
+			if (playerTableNode == null)
+				return null;
+
+			var playerTdNodes = playerTableNode.Descendants("td");
+			HtmlNode playerAgeTdNode = playerTdNodes.ElementAt(1);
+			HtmlNode playerAgeStrongNode = playerAgeTdNode.Descendants("strong").FirstOrDefault();
+			if (playerAgeStrongNode == null)
+				return null;
+
+			var ageString = playerAgeStrongNode.InnerText.Trim();
+			int age;
+			if (int.TryParse(ageString, out age))
+			{
+				return age;
+			}
+
+			return null;
 		}
 
 		public int? GetSquadNumber()

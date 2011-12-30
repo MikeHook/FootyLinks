@@ -34,6 +34,7 @@ namespace FootyLinks.Core.Domain
 		public virtual string Name { get; set; }
 		public virtual int SourceReference { get; private set; }
 		public virtual int? SquadNumber { get; set; }
+		public virtual int? Age { get; set; }
 		public virtual Club CurrentClub { get; set; }
 
 		//This property should be set through the Club.AddFormerPlayer() method to enforce
