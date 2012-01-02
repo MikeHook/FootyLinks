@@ -22,19 +22,20 @@ public final class R {
         public static final int bolton=0x7f020005;
         public static final int chelsea=0x7f020006;
         public static final int everton=0x7f020007;
-        public static final int fulham=0x7f020008;
-        public static final int icon=0x7f020009;
-        public static final int liverpool=0x7f02000a;
-        public static final int man_city=0x7f02000b;
-        public static final int man_utd=0x7f02000c;
-        public static final int newcastle=0x7f02000d;
-        public static final int stoke=0x7f02000e;
-        public static final int sunderland=0x7f02000f;
-        public static final int tottenham=0x7f020010;
-        public static final int west_brom=0x7f020011;
-        public static final int west_ham=0x7f020012;
-        public static final int wigan=0x7f020013;
-        public static final int wolves=0x7f020014;
+        public static final int footylinkslogo=0x7f020008;
+        public static final int fulham=0x7f020009;
+        public static final int icon=0x7f02000a;
+        public static final int liverpool=0x7f02000b;
+        public static final int man_city=0x7f02000c;
+        public static final int man_utd=0x7f02000d;
+        public static final int newcastle=0x7f02000e;
+        public static final int stoke=0x7f02000f;
+        public static final int sunderland=0x7f020010;
+        public static final int tottenham=0x7f020011;
+        public static final int west_brom=0x7f020012;
+        public static final int west_ham=0x7f020013;
+        public static final int wigan=0x7f020014;
+        public static final int wolves=0x7f020015;
     }
     public static final class id {
         public static final int button_guess1=0x7f060004;
@@ -42,8 +43,8 @@ public final class R {
         public static final int button_restart=0x7f060007;
         public static final int button_start=0x7f06000c;
         public static final int gridview_pick_club=0x7f060009;
-        public static final int spinner_difficulty=0x7f06000b;
-        public static final int spinner_difficulty_label=0x7f06000a;
+        public static final int introText=0x7f06000b;
+        public static final int logo=0x7f06000a;
         public static final int text_end_player=0x7f060006;
         public static final int text_game_title=0x7f060001;
         public static final int text_previously_played=0x7f060003;

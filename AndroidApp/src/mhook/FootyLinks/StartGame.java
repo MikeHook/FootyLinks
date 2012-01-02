@@ -19,12 +19,13 @@ public class StartGame extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.start_game);
         
+        /*
         spinner = (Spinner) findViewById(R.id.spinner_difficulty);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
                 this, R.array.difficulty_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
-        
+        */
         Button startButton = (Button) findViewById(R.id.button_start);
         startButton.setOnClickListener(new StartButtonClickListener());
     }   
