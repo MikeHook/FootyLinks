@@ -34,7 +34,7 @@
     	android:id="@+id/introText" 
     	android:layout_width="wrap_content" 
     	android:layout_below="@id/logo" 
-    	android:text="Can you guess the clubs connecting these premiership football stars?" 
+    	android:text="Test your footie knowledge by guessing the clubs connecting these premiership football stars" 
     	android:layout_centerHorizontal="true" 
     	android:layout_margin="20dp"
     />

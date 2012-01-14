@@ -79,15 +79,7 @@
     	android:layout_width="100dip"
     	android:layout_height="wrap_content"
     	android:layout_alignParentBottom="true"
-    	android:layout_alignParentLeft="true"
+    	android:layout_centerHorizontal="true"
     	android:text="Give me another"
-    />
-    <Button
-    	android:id="@+id/button_quit"
-    	android:layout_width="100dip"
-    	android:layout_height="wrap_content"
-    	android:layout_alignParentBottom="true"
-    	android:layout_alignParentRight="true"
-    	android:text="Quit"
-    />    
+    />  
 </RelativeLayout>

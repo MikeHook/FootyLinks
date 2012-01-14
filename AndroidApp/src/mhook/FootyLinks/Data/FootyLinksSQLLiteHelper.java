@@ -36,6 +36,7 @@ public class FootyLinksSQLLiteHelper extends SQLiteOpenHelper {
 	    public static final String CurrentClub_id = "CurrentClub_id";
 	    public static final String _id = "_id";	
 	    public static final String SquadNumber = "SquadNumber";	
+	    public static final String Age = "Age";	
 	}
 	
 	public static class ScoreColumns {

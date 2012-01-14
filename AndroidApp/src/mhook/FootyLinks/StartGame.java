@@ -1,5 +1,6 @@
 package mhook.FootyLinks;
 
+import mhook.FootyLinks.Data.DatabaseAdapter;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,6 +20,10 @@ public class StartGame extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.start_game);
         
+        //Make a call to open the database so it is created if it doesn't already exist
+        DatabaseAdapter footyLinksDbAdapter = new DatabaseAdapter(this);        
+        footyLinksDbAdapter.open();  
+        
         /*
         spinner = (Spinner) findViewById(R.id.spinner_difficulty);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
@@ -36,6 +41,8 @@ public class StartGame extends Activity {
 			
 			Intent intent = new Intent(StartGame.this, OneDegree.class);     
             startActivity(intent);	
+          
+            
 		}    	
     } 
 }

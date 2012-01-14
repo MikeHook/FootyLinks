@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="hello">Play the Footy Links game</string>
-    <string name="app_name">Footy Links</string>
+    <string name="app_name">Footy Links (Alpha)</string>
 <!-- start_game strings-->
     <string name="spinner_difficulty_prompt">Choose your difficulty level</string>
     <string-array name="difficulty_array">

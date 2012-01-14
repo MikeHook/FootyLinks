@@ -1,5 +1,9 @@
 package mhook.FootyLinks;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import mhook.FootyLinks.Data.DatabaseAdapter;
 import mhook.FootyLinks.Data.FootyLinksSQLLiteHelper;
 import android.app.Activity;
@@ -16,7 +20,8 @@ import android.widget.Toast;
 
 public class OneDegree  extends Activity {
 	
-	public int ClubIndex;
+	public Integer ScorePenalty = 1;
+	public Integer ClubIndex;
 	
 	//Note, the order of this array is crucial as it is used in the lookup from the PickClub view
 	public String[] Clubs = { 
@@ -42,13 +47,14 @@ public class OneDegree  extends Activity {
 			"Wolves"			
 	};
 	
+	//These are the 'top six' clubs in the Clubs array
+	public List<Integer> TopClubIndexes = Arrays.asList(0, 6, 9, 10, 11, 15);
+		
 	private DatabaseAdapter footyLinksDbAdapter;
 	
 	/** Called when the activity is first created. */
 	@Override
     public void onCreate(Bundle savedInstanceState) {
-		//Generate a random int between 0 and 20
-		ClubIndex = (int)(Math.random() * (21));   ;
 		
         super.onCreate(savedInstanceState);
         setContentView(R.layout.one_degree);
@@ -60,13 +66,20 @@ public class OneDegree  extends Activity {
         
         TextView guess1Button = (TextView) findViewById(R.id.button_guess1);        
         guess1Button.setOnClickListener(new Guess1ButtonClickListener());
+        
+        Button restartButton = (Button) findViewById(R.id.button_restart);        
+        restartButton.setOnClickListener(new RestartButtonClickListener());
     } 
 	
     private void populateFields() {   	
     	
+		//Generate a random int between 0 and 19, representing the index of the club answer
+		ClubIndex = (int)(Math.random() * 20);
+    	
     	//Hard code this for now
     	int clubId = footyLinksDbAdapter.getClubId(Clubs[ClubIndex]);
     	
+    	//Start player
     	Cursor startPlayerDbCursor = footyLinksDbAdapter.getPlayerByFormerClub(clubId);
     	String startPlayerName = startPlayerDbCursor.getString(
     			startPlayerDbCursor.getColumnIndexOrThrow(FootyLinksSQLLiteHelper.PlayerColumns.Name));
@@ -74,6 +87,14 @@ public class OneDegree  extends Activity {
     	TextView startPlayerTextView = (TextView) findViewById(R.id.text_start_player);
     	startPlayerTextView.setText(startPlayerName);
     	
+    	//Guess button
+		//Update the guess button with the answer and disable clicking 
+		TextView guess1Button = (TextView) findViewById(R.id.button_guess1);
+		guess1Button.setText("what club?");
+		guess1Button.setClickable(true);
+		guess1Button.setTextColor(Color.parseColor("#4876FF"));
+    	
+    	//End player
     	Cursor endPlayerDbCursor = footyLinksDbAdapter.getPlayerByCurrentClub(clubId);
     	String endPlayerName = endPlayerDbCursor.getString(
     			endPlayerDbCursor.getColumnIndexOrThrow(FootyLinksSQLLiteHelper.PlayerColumns.Name));
@@ -90,11 +111,22 @@ public class OneDegree  extends Activity {
 	}
 	
     public class Guess1ButtonClickListener implements OnClickListener {
-
 		public void onClick(View v) {
 			
 			Intent pickClubIntent = new Intent(OneDegree.this, PickClub.class);  			
 			startActivityForResult(pickClubIntent, 1);
+		}    	
+    }
+    
+    public class RestartButtonClickListener implements OnClickListener {
+		public void onClick(View v) {		
+			
+	    	//Decrement the score
+			int score = footyLinksDbAdapter.getScore();
+			footyLinksDbAdapter.updateScore(score-ScorePenalty);
+			populateScore();	
+			
+			populateFields();
 		}    	
     }
 	
@@ -129,16 +161,25 @@ public class OneDegree  extends Activity {
     
     protected void updateViewForCorrectAnswer()
     {
+    	Integer points = 2;
+    	if (TopClubIndexes.contains(ClubIndex))
+    	{
+    		// Guessing these answers should be easier so give less points	
+    		points = 1;
+    	}
+    	
     	//Increment the score
 		int score = footyLinksDbAdapter.getScore();
-		footyLinksDbAdapter.updateScore(score+1);
+		footyLinksDbAdapter.updateScore(score+points);
 		populateScore();	
 		
 		//Update the guess button with the answer and disable clicking 
 		TextView guess1Button = (TextView) findViewById(R.id.button_guess1);
 		guess1Button.setText(Clubs[ClubIndex]);
 		guess1Button.setClickable(false);
-		guess1Button.setTextColor(Color.GREEN);		
+		guess1Button.setTextColor(Color.GREEN);
+		
+		ScorePenalty = 0;
     }    
 }
 

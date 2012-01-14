@@ -39,12 +39,11 @@ public final class R {
     }
     public static final class id {
         public static final int button_guess1=0x7f060004;
-        public static final int button_quit=0x7f060008;
         public static final int button_restart=0x7f060007;
-        public static final int button_start=0x7f06000c;
-        public static final int gridview_pick_club=0x7f060009;
-        public static final int introText=0x7f06000b;
-        public static final int logo=0x7f06000a;
+        public static final int button_start=0x7f06000b;
+        public static final int gridview_pick_club=0x7f060008;
+        public static final int introText=0x7f06000a;
+        public static final int logo=0x7f060009;
         public static final int text_end_player=0x7f060006;
         public static final int text_game_title=0x7f060001;
         public static final int text_previously_played=0x7f060003;

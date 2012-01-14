@@ -102,9 +102,13 @@ public class DatabaseAdapter {
 
         Cursor mCursor =
             sqlLiteDatabase.query(true, FootyLinksSQLLiteHelper.Tables.Player, 
-            		new String[] {FootyLinksSQLLiteHelper.PlayerColumns._id, FootyLinksSQLLiteHelper.PlayerColumns.Name, FootyLinksSQLLiteHelper.PlayerColumns.CurrentClub_id}, 
+            		new String[] {FootyLinksSQLLiteHelper.PlayerColumns._id, 
+            		FootyLinksSQLLiteHelper.PlayerColumns.Name, 
+            		FootyLinksSQLLiteHelper.PlayerColumns.CurrentClub_id}, 
             		FootyLinksSQLLiteHelper.PlayerColumns.CurrentClub_id + "=" + clubId + 
-            		" AND " + FootyLinksSQLLiteHelper.PlayerColumns.SquadNumber + "< 26" , 
+            		" AND " + FootyLinksSQLLiteHelper.PlayerColumns.SquadNumber + "< 26" +
+            		" AND " + FootyLinksSQLLiteHelper.PlayerColumns.Age + "< 36" 
+            		, 
             		null, null, null, null, null);
         if (mCursor != null) {
     		moveCursorToRandomPosition(mCursor); 
@@ -155,7 +159,7 @@ public class DatabaseAdapter {
     
     private void moveCursorToRandomPosition(Cursor cursor){
     	int rowCount = cursor.getCount();
-		int randomRowPosition = (int)(Math.random() * (rowCount + 1));    		
+		int randomRowPosition = (int)(Math.random() * (rowCount));    		
         cursor.moveToPosition(randomRowPosition);    	
     }
     
