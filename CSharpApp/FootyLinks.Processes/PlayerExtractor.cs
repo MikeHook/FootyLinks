@@ -152,7 +152,7 @@ namespace FootyLinks.Processes
 			if (clubSourceId.HasValue == false)
 				return null;
 
-			var currentClubDto = _playerClubs.FirstOrDefault(c => c.ClubSourceId == GetCurrentClubSourceId());
+			var currentClubDto = _playerClubs.FirstOrDefault(c => c.ClubSourceId == clubSourceId);
 			if (currentClubDto == null)
 				return null;
 

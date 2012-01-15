@@ -11,14 +11,16 @@ namespace FootyLinks.Processes
 {
 	public class HtmlScraper
 	{
-		public static int MaxPlayerId = 59270;
-		public static string ErrorLogPath = @"C:\_Development\Android\FootyLinks\ErrorLog\log.txt";
+		//10611 - 59270
+		//63635
+		public static int MaxPlayerId = 63635;
+		public static string ErrorLogPath = @"C:\_Development\FootyLinks\ErrorLog\log.txt";
 
 		public static void ScrapePlayers(string pageAddress)
 		{
-			for (int playerId = 10611; playerId <= MaxPlayerId; playerId++)
+			for (int playerId = 1; playerId <= MaxPlayerId; playerId++)
 			{
-				string filePath = string.Format(@"C:\_Development\Android\FootyLinks\PlayersSource\{0}.html", playerId);
+				string filePath = string.Format(@"C:\_Development\FootyLinks\PlayersSource\{0}.html", playerId);
 				var htmlStream = getHtmlStream(pageAddress, playerId);
 				if (htmlStream == null)
 					continue;
@@ -29,7 +31,7 @@ namespace FootyLinks.Processes
 				}
 				if (playerId % 10 == 0)
 				{
-					int pauseTime = 1000;
+					int pauseTime = 750;
 					System.Threading.Thread.Sleep(pauseTime);
 				}
 			}

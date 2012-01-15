@@ -31,15 +31,35 @@ namespace FootyLinks.DataImporter
 		/*
 		static void Main(string[] args)
 		{
-			//Reina: 24340		 
-			string filePath = @"C:\_Development\FootyLinks\PlayersSource\24340.html";
+		 
+			//Reina: 24340 Stevie G: 15643		 
+			string filePath = @"C:\_Development\FootyLinks\PlayersSource\15643.html";
 			//Test(filePath);
 
 			var playerFileInfo = new FileInfo(filePath);
 			int sourceReference = int.Parse(playerFileInfo.Name.Split('.')[0]);
-			importPlayer(filePath, sourceReference, true);
+			importPlayer(filePath, sourceReference, true, true);
+		}
+		 */ 
+
+		/*
+		//Run this to scrape the players from tinternets
+		static void Main(string[] args)
+		{
+			try
+			{
+				HtmlScraper.ScrapePlayers("blah");				
+			}
+			catch (Exception ex)
+			{
+				writeErrorToFile(0, ex);
+			}
+
 		}*/
-		 
+
+		
+		
+		//Run this to import the player records into the DB
 		static void Main(string[] args)
 		{
 			try
@@ -63,7 +83,7 @@ namespace FootyLinks.DataImporter
 					{
 						writeErrorToFile(sourceReference, ex);
 					}
-				}
+				}				
 			}
 			catch (Exception ex)
 			{
@@ -71,7 +91,7 @@ namespace FootyLinks.DataImporter
 			}
 			
 		}
-		
+				  
 
 		private static void Test(string sourceFilePath)
 		{
@@ -128,7 +148,7 @@ namespace FootyLinks.DataImporter
 			}		
 
 			IList<PlayerClubDto> formerClubDtos = playerExtractor.GetFormerClubs();
-			if (currentClubDto == null || formerClubDtos.Count == 0)
+			if (currentClubDto == null && formerClubDtos.Count == 0)
 			{
 				writeInfoToFile(sourceReference, "Current or former clubs not found for player: " + playerName);
 				return;

@@ -25,17 +25,19 @@ public final class R {
         public static final int footylinkslogo=0x7f020008;
         public static final int fulham=0x7f020009;
         public static final int icon=0x7f02000a;
-        public static final int liverpool=0x7f02000b;
-        public static final int man_city=0x7f02000c;
-        public static final int man_utd=0x7f02000d;
-        public static final int newcastle=0x7f02000e;
-        public static final int stoke=0x7f02000f;
-        public static final int sunderland=0x7f020010;
-        public static final int tottenham=0x7f020011;
-        public static final int west_brom=0x7f020012;
-        public static final int west_ham=0x7f020013;
-        public static final int wigan=0x7f020014;
-        public static final int wolves=0x7f020015;
+        public static final int icon2m=0x7f02000b;
+        public static final int iconorig=0x7f02000c;
+        public static final int liverpool=0x7f02000d;
+        public static final int man_city=0x7f02000e;
+        public static final int man_utd=0x7f02000f;
+        public static final int newcastle=0x7f020010;
+        public static final int stoke=0x7f020011;
+        public static final int sunderland=0x7f020012;
+        public static final int tottenham=0x7f020013;
+        public static final int west_brom=0x7f020014;
+        public static final int west_ham=0x7f020015;
+        public static final int wigan=0x7f020016;
+        public static final int wolves=0x7f020017;
     }
     public static final class id {
         public static final int button_guess1=0x7f060004;
