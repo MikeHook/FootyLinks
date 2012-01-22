@@ -48,14 +48,13 @@ public class DatabaseAdapter {
     	
     	long rows = DatabaseUtils.queryNumEntries(sqlLiteDatabase, FootyLinksSQLLiteHelper.Tables.Score);
     	
-    	long rowId;
     	if (rows == 0)
     	{
         	//If no score exists then insert one
         	ContentValues initialValues = new ContentValues();
         	initialValues.put(FootyLinksSQLLiteHelper.ScoreColumns._id, 0);
         	initialValues.put(FootyLinksSQLLiteHelper.ScoreColumns.HighScore, 0);           
-            rowId = sqlLiteDatabase.insert(FootyLinksSQLLiteHelper.Tables.Score, null, initialValues);     	
+            sqlLiteDatabase.insert(FootyLinksSQLLiteHelper.Tables.Score, null, initialValues);     	
     	}
     	
     	Cursor mCursor =

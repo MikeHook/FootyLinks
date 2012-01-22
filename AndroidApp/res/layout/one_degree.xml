@@ -50,10 +50,12 @@
     	android:layout_width="wrap_content"
     	android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dip"
     	android:layout_below="@id/text_previously_played"
     	android:text="@string/guess_string"
-    	android:textSize="18dip"
+    	android:textSize="22dip"
     	android:textColor="#4876FF"
+    	android:textStyle="italic"
     />
    	<TextView
     	android:id="@+id/text_squad_includes"
